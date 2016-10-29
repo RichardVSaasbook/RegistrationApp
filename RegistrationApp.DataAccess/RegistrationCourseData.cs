@@ -15,7 +15,7 @@ namespace RegistrationApp.DataAccess
         /// <returns>The number of Students registered for the Course.</returns>
         public int GetNumberOfStudentsInCourse(CourseSchedule courseSchedule)
         {
-            return courseSchedule.Students.ToList().Count;
+            return courseSchedule.StudentSchedules.Where(s => s.Enrolled).ToList().Count;
         }
     }
 }

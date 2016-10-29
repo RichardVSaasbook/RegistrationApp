@@ -23,16 +23,22 @@ namespace RegistrationApp.Tests.DataAccess
 
             Student student = new Student
             {
-                CourseSchedules = new List<CourseSchedule>()
+                StudentSchedules = new List<StudentSchedule>()
             };
 
             CourseSchedule schedule = new CourseSchedule
             {
                 Capacity = 3,
-                Students = new List<Student>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new Student(),
-                    new Student()
+                    new StudentSchedule
+                    {
+                        Student = new Student(),
+                    },
+                    new StudentSchedule
+                    {
+                        Student = new Student(),
+                    }
                 },
                 Schedule = new Schedule
                 {
@@ -45,7 +51,7 @@ namespace RegistrationApp.Tests.DataAccess
             mockDB.AddDataEntry(schedule);
             data.RegisterForCourse(student, schedule);
 
-            Assert.Equal(schedule.Students.ToList().Count, 3);
+            Assert.Equal(schedule.StudentSchedules.ToList().Count, 3);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
 
@@ -60,17 +66,17 @@ namespace RegistrationApp.Tests.DataAccess
 
             Student student = new Student
             {
-                CourseSchedules = new List<CourseSchedule>(),
+                StudentSchedules = new List<StudentSchedule>(),
                 PersonId = 5
             };
 
             CourseSchedule schedule = new CourseSchedule
             {
                 Capacity = 3,
-                Students = new List<Student>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new Student(),
-                    new Student()
+                    new StudentSchedule(),
+                    new StudentSchedule()
                 },
                 Schedule = new Schedule
                 {
@@ -83,7 +89,7 @@ namespace RegistrationApp.Tests.DataAccess
             mockDB.AddDataEntry(schedule);
             data.RegisterForCourse(student, schedule);
 
-            Assert.Equal(schedule.Students.ToList().Count, 2);
+            Assert.Equal(schedule.StudentSchedules.ToList().Count, 2);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
         }
 
@@ -98,17 +104,17 @@ namespace RegistrationApp.Tests.DataAccess
 
             Student student = new Student
             {
-                CourseSchedules = new List<CourseSchedule>()
+                StudentSchedules = new List<StudentSchedule>()
             };
 
             CourseSchedule schedule = new CourseSchedule
             {
                 Capacity = 3,
-                Students = new List<Student>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new Student(),
-                    new Student(),
-                    new Student()
+                    new StudentSchedule { Enrolled = true },
+                    new StudentSchedule { Enrolled = true },
+                    new StudentSchedule { Enrolled = true }
                 },
                 Schedule = new Schedule
                 {
@@ -121,7 +127,7 @@ namespace RegistrationApp.Tests.DataAccess
             mockDB.AddDataEntry(schedule);
             data.RegisterForCourse(student, schedule);
 
-            Assert.Equal(schedule.Students.ToList().Count, 3);
+            Assert.Equal(schedule.StudentSchedules.ToList().Count, 3);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
         }
         
@@ -136,14 +142,17 @@ namespace RegistrationApp.Tests.DataAccess
 
             Student student = new Student
             {
-                CourseSchedules = new List<CourseSchedule>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new CourseSchedule
+                    new StudentSchedule
                     {
-                        Schedule = new Schedule
+                        CourseSchedule = new CourseSchedule
                         {
-                            StartTime = new TimeSpan(8, 0, 0),
-                            TimeBlocks = 2
+                            Schedule = new Schedule
+                            {
+                                StartTime = new TimeSpan(8, 0, 0),
+                                TimeBlocks = 2
+                            }
                         }
                     }
                 }
@@ -152,10 +161,10 @@ namespace RegistrationApp.Tests.DataAccess
             CourseSchedule schedule = new CourseSchedule
             {
                 Capacity = 3,
-                Students = new List<Student>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new Student(),
-                    new Student()
+                    new StudentSchedule(),
+                    new StudentSchedule()
                 },
                 Schedule = new Schedule
                 {
@@ -168,7 +177,105 @@ namespace RegistrationApp.Tests.DataAccess
             mockDB.AddDataEntry(schedule);
             data.RegisterForCourse(student, schedule);
 
-            Assert.Equal(schedule.Students.ToList().Count, 2);
+            Assert.Equal(schedule.StudentSchedules.ToList().Count, 2);
+            mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
+        }
+
+        /// <summary>
+        /// Make sure a Student can hold a Course and that it doesn't count towards capacity.
+        /// </summary>
+        [Fact]
+        public void Test_HoldCourse()
+        {
+            MockDatabase<CourseSchedule> mockDB = new MockDatabase<CourseSchedule>(c => c.CourseSchedules);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            Student student = new Student
+            {
+                StudentSchedules = new List<StudentSchedule>()
+            };
+
+            CourseSchedule schedule = new CourseSchedule
+            {
+                Capacity = 3,
+                StudentSchedules = new List<StudentSchedule>
+                {
+                    new StudentSchedule
+                    {
+                        Student = new Student(),
+                        Enrolled = true
+                    },
+                    new StudentSchedule
+                    {
+                        Student = new Student(),
+                        Enrolled = true
+                    }
+                },
+                Schedule = new Schedule
+                {
+                    StartTime = new TimeSpan(8, 0, 0),
+                    TimeBlocks = 1
+                },
+                ProfessorId = 5
+            };
+
+            mockDB.AddDataEntry(schedule);
+            data.HoldCourse(student, schedule);
+
+            Assert.Equal(3, schedule.StudentSchedules.ToList().Count);
+            Assert.Equal(2, data.GetNumberOfStudentsInCourse(schedule));
+            mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        /// <summary>
+        /// Make sure that a Student can drop a Course he/she is registered for.
+        /// </summary>
+        [Fact]
+        public void Test_DropCourse_Success()
+        {
+            MockDatabase<Student> mockDB = new MockDatabase<Student>(c => c.Students);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            StudentSchedule course1 = new StudentSchedule();
+            StudentSchedule course2 = new StudentSchedule();
+            Student student = new Student
+            {
+                StudentSchedules = new List<StudentSchedule>
+                {
+                    course1, course2
+                }
+            };
+
+            mockDB.AddDataEntry(student);
+            data.DropCourse(student, course2);
+
+            Assert.Equal(student.StudentSchedules.ToList().Count, 1);
+            mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        /// <summary>
+        /// Make sure that a Student cannot drop a class he/she is not in.
+        /// </summary>
+        [Fact]
+        public void Test_DropCourse_Failure()
+        {
+            MockDatabase<Student> mockDB = new MockDatabase<Student>(c => c.Students);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            StudentSchedule course1 = new StudentSchedule();
+            StudentSchedule course2 = new StudentSchedule();
+            Student student = new Student
+            {
+                StudentSchedules = new List<StudentSchedule>
+                {
+                    course1, course2
+                }
+            };
+
+            mockDB.AddDataEntry(student);
+            data.DropCourse(student, new StudentSchedule());
+
+            Assert.Equal(student.StudentSchedules.ToList().Count, 2);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
         }
     }

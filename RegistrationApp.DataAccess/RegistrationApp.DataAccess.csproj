@@ -88,6 +88,9 @@
     <Compile Include="Student.cs">
       <DependentUpon>RegistrationModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentSchedule.cs">
+      <DependentUpon>RegistrationModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="RegistrationModel.edmx">

@@ -17,7 +17,9 @@
         <AssociationConnector Association="RegistrationAppModel.fk_CourseScheduleCourseId" ManuallyRouted="false" />
         <AssociationConnector Association="RegistrationAppModel.fk_CourseScheduleScheduleId" ManuallyRouted="false" />
         <AssociationConnector Association="RegistrationAppModel.fk_CourseDepartment" ManuallyRouted="false" />
-        <AssociationConnector Association="RegistrationAppModel.StudentSchedule" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RegistrationAppModel.StudentSchedule" Width="1.5" PointX="7.5" PointY="4" />
+        <AssociationConnector Association="RegistrationAppModel.fk_StudentScheduleStudentId" />
+        <AssociationConnector Association="RegistrationAppModel.fk_StudentScheduleCourseScheduleId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

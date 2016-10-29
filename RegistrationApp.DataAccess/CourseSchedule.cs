@@ -17,7 +17,7 @@ namespace RegistrationApp.DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CourseSchedule()
         {
-            this.Students = new HashSet<Student>();
+            this.StudentSchedules = new HashSet<StudentSchedule>();
         }
     
         public int CourseScheduleId { get; set; }
@@ -30,6 +30,6 @@ namespace RegistrationApp.DataAccess
         public virtual Course Course { get; set; }
         public virtual Schedule Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<StudentSchedule> StudentSchedules { get; set; }
     }
 }

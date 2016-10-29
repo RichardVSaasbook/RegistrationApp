@@ -21,10 +21,11 @@ namespace RegistrationApp.Tests.DataAccess
             CourseSchedule schedule = new CourseSchedule
             {
                 Capacity = 3,
-                Students = new List<Student>
+                StudentSchedules = new List<StudentSchedule>
                 {
-                    new Student(),
-                    new Student()
+                    new StudentSchedule { Enrolled = true },
+                    new StudentSchedule { Enrolled = false },
+                    new StudentSchedule { Enrolled = true }
                 }
             };
 

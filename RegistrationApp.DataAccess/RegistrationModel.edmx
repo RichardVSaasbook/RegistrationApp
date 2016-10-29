@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RegistrationAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RegistrationAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonId" />
@@ -44,6 +44,7 @@
           </Key>
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="CourseScheduleId" Type="int" Nullable="false" />
+          <Property Name="Enrolled" Type="bit" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -198,8 +199,7 @@
             <End Role="StudentSchedule" EntitySet="StudentSchedule" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RegistrationAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -220,7 +220,7 @@
           <Property Name="MajorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.fk_StudentPersonId" FromRole="Student" ToRole="Person" />
           <NavigationProperty Name="Department" Relationship="Self.fk_StudentMajorId" FromRole="Student" ToRole="Department" />
-          <NavigationProperty Name="CourseSchedules" Relationship="Self.StudentSchedule" FromRole="Student" ToRole="CourseSchedule" />
+          <NavigationProperty Name="StudentSchedules" Relationship="RegistrationAppModel.fk_StudentScheduleStudentId" FromRole="Student" ToRole="StudentSchedule" />
         </EntityType>
         <EntityType Name="CourseSchedule">
           <Key>
@@ -234,7 +234,7 @@
           <NavigationProperty Name="Person" Relationship="Self.fk_CourseScheduleProfessorId" FromRole="CourseSchedule" ToRole="Person" />
           <NavigationProperty Name="Course" Relationship="Self.fk_CourseScheduleCourseId" FromRole="CourseSchedule" ToRole="Course" />
           <NavigationProperty Name="Schedule" Relationship="Self.fk_CourseScheduleScheduleId" FromRole="CourseSchedule" ToRole="Schedule" />
-          <NavigationProperty Name="Students" Relationship="Self.StudentSchedule" FromRole="CourseSchedule" ToRole="Student" />
+          <NavigationProperty Name="StudentSchedules" Relationship="RegistrationAppModel.fk_StudentScheduleCourseScheduleId" FromRole="CourseSchedule" ToRole="StudentSchedule" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -337,10 +337,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="StudentSchedule">
-          <End Role="CourseSchedule" Type="Self.CourseSchedule" Multiplicity="*" />
-          <End Role="Student" Type="Self.Student" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="RegistrationAppEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Students" EntityType="Self.Student" />
@@ -372,11 +368,51 @@
             <End Role="Department" EntitySet="Departments" />
             <End Role="Course" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="StudentSchedule" Association="Self.StudentSchedule">
-            <End Role="CourseSchedule" EntitySet="CourseSchedules" />
+          <EntitySet Name="StudentSchedules" EntityType="RegistrationAppModel.StudentSchedule" />
+          <AssociationSet Name="fk_StudentScheduleStudentId" Association="RegistrationAppModel.fk_StudentScheduleStudentId">
             <End Role="Student" EntitySet="Students" />
+            <End Role="StudentSchedule" EntitySet="StudentSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="fk_StudentScheduleCourseScheduleId" Association="RegistrationAppModel.fk_StudentScheduleCourseScheduleId">
+            <End Role="CourseSchedule" EntitySet="CourseSchedules" />
+            <End Role="StudentSchedule" EntitySet="StudentSchedules" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="StudentSchedule">
+          <Key>
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="CourseScheduleId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="Enrolled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="RegistrationAppModel.fk_StudentScheduleStudentId" FromRole="StudentSchedule" ToRole="Student" />
+          <NavigationProperty Name="CourseSchedule" Relationship="RegistrationAppModel.fk_StudentScheduleCourseScheduleId" FromRole="StudentSchedule" ToRole="CourseSchedule" />
+        </EntityType>
+        <Association Name="fk_StudentScheduleStudentId">
+          <End Type="RegistrationAppModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="RegistrationAppModel.StudentSchedule" Role="StudentSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="StudentSchedule">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_StudentScheduleCourseScheduleId">
+          <End Type="RegistrationAppModel.CourseSchedule" Role="CourseSchedule" Multiplicity="1" />
+          <End Type="RegistrationAppModel.StudentSchedule" Role="StudentSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseSchedule">
+              <PropertyRef Name="CourseScheduleId" />
+            </Principal>
+            <Dependent Role="StudentSchedule">
+              <PropertyRef Name="CourseScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -437,14 +473,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="StudentSchedule" TypeName="RegistrationAppModel.StudentSchedule" StoreEntitySet="StudentSchedule">
-            <EndProperty Name="CourseSchedule">
-              <ScalarProperty Name="CourseScheduleId" ColumnName="CourseScheduleId" />
-            </EndProperty>
-            <EndProperty Name="Student">
-              <ScalarProperty Name="PersonId" ColumnName="StudentId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="StudentSchedules">
+            <EntityTypeMapping TypeName="RegistrationAppModel.StudentSchedule">
+              <MappingFragment StoreEntitySet="StudentSchedule">
+                <ScalarProperty Name="Enrolled" ColumnName="Enrolled" />
+                <ScalarProperty Name="CourseScheduleId" ColumnName="CourseScheduleId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
