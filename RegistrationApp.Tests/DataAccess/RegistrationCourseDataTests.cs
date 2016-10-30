@@ -151,5 +151,34 @@ namespace RegistrationApp.Tests.DataAccess
             Assert.Equal(capacity, existingCourseSchedule.Capacity);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
+
+        /// <summary>
+        /// Make sure that we can get a List of Students from a CourseSchedule.
+        /// </summary>
+        [Fact]
+        public void Test_ListEnrolledStudents()
+        {
+            MockDatabase<CourseSchedule> mockDB = new MockDatabase<CourseSchedule>(c => c.CourseSchedules);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            CourseSchedule schedule = new CourseSchedule
+            {
+                Capacity = 3,
+                StudentSchedules = new List<StudentSchedule>
+                {
+                    new StudentSchedule { Enrolled = true, Student = new Student { Person = new Person { Name = "Jim" } } },
+                    new StudentSchedule { Enrolled = false, Student = new Student { Person = new Person { Name = "Bob" } } },
+                    new StudentSchedule { Enrolled = true, Student = new Student { Person = new Person { Name = "Sherley" } } }
+                }
+            };
+
+            mockDB.AddDataEntry(schedule);
+        
+            List<Student> students = data.ListEnrolledStudents(schedule);
+
+            Assert.Equal(2, students.Count);
+            Assert.Equal("Jim", students[0].Person.Name);
+            Assert.Equal("Sherley", students[1].Person.Name);
+        }
     }
 }
