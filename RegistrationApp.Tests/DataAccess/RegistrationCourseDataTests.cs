@@ -106,5 +106,50 @@ namespace RegistrationApp.Tests.DataAccess
             mockDB.MockSet.Verify(m => m.Add(It.IsAny<CourseSchedule>()), Times.Never());
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
         }
+
+        /// <summary>
+        /// Make sure that a Coures can be cancelled.
+        /// </summary>
+        [Fact]
+        public void Test_CancelCourse()
+        {
+            MockDatabase<CourseSchedule> mockDB = new MockDatabase<CourseSchedule>(c => c.CourseSchedules);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            CourseSchedule existingCourseSchedule = new CourseSchedule();
+            mockDB.AddDataEntry(existingCourseSchedule);
+
+            data.CancelCourse(existingCourseSchedule);
+
+            mockDB.MockSet.Verify(m => m.Remove(It.IsAny<CourseSchedule>()), Times.Once());
+            mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        /// <summary>
+        /// Make sure the data of a Course can be modified.
+        /// </summary>
+        [Fact]
+        public void Test_ModifyCourse()
+        {
+            MockDatabase<CourseSchedule> mockDB = new MockDatabase<CourseSchedule>(c => c.CourseSchedules);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            CourseSchedule existingCourseSchedule = new CourseSchedule
+            {
+                Schedule = new Schedule { StartTime = new TimeSpan(8, 0, 0), TimeBlocks = 2 },
+                Capacity = 15
+            };
+            mockDB.AddDataEntry(existingCourseSchedule);
+
+            Schedule schedule = new Schedule { StartTime = new TimeSpan(11, 0, 0), TimeBlocks = 1 };
+            short capacity = 30;
+
+            data.ModifyCourse(existingCourseSchedule, schedule, capacity);
+
+            Assert.Equal(schedule.StartTime, existingCourseSchedule.Schedule.StartTime);
+            Assert.Equal(schedule.TimeBlocks, existingCourseSchedule.Schedule.TimeBlocks);
+            Assert.Equal(capacity, existingCourseSchedule.Capacity);
+            mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
     }
 }
