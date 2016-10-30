@@ -230,7 +230,7 @@
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <Property Name="ScheduleId" Type="Int32" Nullable="false" />
           <Property Name="ProfessorId" Type="Int32" Nullable="false" />
-          <Property Name="Capacity" Type="Int16" />
+          <Property Name="Capacity" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.fk_CourseScheduleProfessorId" FromRole="CourseSchedule" ToRole="Person" />
           <NavigationProperty Name="Course" Relationship="Self.fk_CourseScheduleCourseId" FromRole="CourseSchedule" ToRole="Course" />
           <NavigationProperty Name="Schedule" Relationship="Self.fk_CourseScheduleScheduleId" FromRole="CourseSchedule" ToRole="Schedule" />

@@ -24,7 +24,7 @@ namespace RegistrationApp.DataAccess
         public int CourseId { get; set; }
         public int ScheduleId { get; set; }
         public int ProfessorId { get; set; }
-        public Nullable<short> Capacity { get; set; }
+        public short Capacity { get; set; }
     
         public virtual Person Person { get; set; }
         public virtual Course Course { get; set; }
