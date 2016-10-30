@@ -1,5 +1,6 @@
 ﻿using RegistrationApp.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RegistrationApp.DataAccess
@@ -109,6 +110,23 @@ namespace RegistrationApp.DataAccess
             courseSchedule.Schedule = schedule;
             courseSchedule.Capacity = capacity;
             return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Gets a List of all Students enrolled to the Course.
+        /// </summary>
+        /// <param name="courseSchedule">The Course to get Students from.</param>
+        /// <returns>The List of Students.</returns>
+        public List<Student> ListEnrolledStudents(CourseSchedule courseSchedule)
+        {
+            List<Student> students = new List<Student>();
+
+            foreach (StudentSchedule studentSchedule in courseSchedule.StudentSchedules.Where(s => s.Enrolled))
+            {
+                students.Add(studentSchedule.Student);
+            }
+
+            return students;
         }
     }
 }
