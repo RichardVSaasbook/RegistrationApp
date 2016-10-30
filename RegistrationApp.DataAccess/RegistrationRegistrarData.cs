@@ -22,5 +22,27 @@ namespace RegistrationApp.DataAccess
         {
             return db.CourseSchedules.Where(s => GetNumberOfStudentsInCourse(s) >= s.Capacity).ToList();
         }
+
+        /// <summary>
+        /// Adds a Student to the student body.
+        /// </summary>
+        /// <param name="student">The Student to add.</param>
+        /// <returns>True if the addition was successful.</returns>
+        public bool AddStudent(Student student)
+        {
+            db.Students.Add(student);
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Removes a Student from the student body.
+        /// </summary>
+        /// <param name="student">The Student to remove.</param>
+        /// <returns>True if the addition was successful.</returns>
+        public bool RemoveStudent(Student student)
+        {
+            db.Students.Remove(student);
+            return db.SaveChanges() > 0;
+        }
     }
 }
