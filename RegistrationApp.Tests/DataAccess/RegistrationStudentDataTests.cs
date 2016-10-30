@@ -285,7 +285,6 @@ namespace RegistrationApp.Tests.DataAccess
         [Fact]
         public void Test_ListStudentCourses()
         {
-
             MockDatabase<Student> mockDB = new MockDatabase<Student>(c => c.Students);
             RegistrationData data = new RegistrationData(mockDB.Context);
 

@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\RegistrationCourseDataTests.cs" />
+    <Compile Include="DataAccess\RegistrationRegistrarDataTests.cs" />
     <Compile Include="DataAccess\RegistrationStudentDataTests.cs" />
     <Compile Include="MockDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
