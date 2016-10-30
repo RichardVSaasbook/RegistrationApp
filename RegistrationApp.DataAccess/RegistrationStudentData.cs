@@ -1,6 +1,8 @@
 ﻿using RegistrationApp.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace RegistrationApp.DataAccess
 {
@@ -70,6 +72,22 @@ namespace RegistrationApp.DataAccess
             }
 
             return successful;
+        }
+
+        /// <summary>
+        /// Reutnrs a list of all Courses the Student is registered for.
+        /// </summary>
+        /// <param name="student">The Student to list Courses from.</param>
+        /// <returns>The List of Courses.</returns>
+        public List<CourseSchedule> ListStudentSchedule(Student student) {
+            List<CourseSchedule> courses = new List<CourseSchedule>();
+
+            foreach (StudentSchedule studentSchedule in student.StudentSchedules.Where(s => s.Enrolled))
+            {
+                courses.Add(studentSchedule.CourseSchedule);
+            }
+
+            return courses;
         }
 
         /// <summary>

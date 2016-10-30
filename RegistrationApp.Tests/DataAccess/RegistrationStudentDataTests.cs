@@ -278,5 +278,34 @@ namespace RegistrationApp.Tests.DataAccess
             Assert.Equal(student.StudentSchedules.ToList().Count, 2);
             mockDB.MockContext.Verify(m => m.SaveChanges(), Times.Never());
         }
+
+        /// <summary>
+        /// Make sure we can list a Student's Courses.
+        /// </summary>
+        [Fact]
+        public void Test_ListStudentCourses()
+        {
+
+            MockDatabase<Student> mockDB = new MockDatabase<Student>(c => c.Students);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            Student student = new Student
+            {
+                StudentSchedules = new List<StudentSchedule>
+                {
+                    new StudentSchedule { Enrolled = true, CourseSchedule = new CourseSchedule { Course = new Course { Title = "Intro to Computer Science" } } },
+                    new StudentSchedule { Enrolled = false, CourseSchedule = new CourseSchedule { Course = new Course { Title = "English I" } } },
+                    new StudentSchedule { Enrolled = true, CourseSchedule = new CourseSchedule { Course = new Course { Title = "Calculus IV" } } },
+                }
+            };
+
+            mockDB.AddDataEntry(student);
+
+            List<CourseSchedule> courses = data.ListStudentSchedule(student);
+
+            Assert.Equal(2, courses.Count);
+            Assert.Equal("Intro to Computer Science", courses[0].Course.Title);
+            Assert.Equal("Calculus IV", courses[1].Course.Title);
+        }
     }
 }
