@@ -62,5 +62,53 @@ namespace RegistrationApp.DataAccess
 
             return successful;
         }
+
+        /// <summary>
+        /// Cancel a Course.
+        /// </summary>
+        /// <param name="courseSchedule">The Course to cancel.</param>
+        /// <returns>True if the cancellation was successful.</returns>
+        public bool CancelCourse(CourseSchedule courseSchedule)
+        {
+            db.CourseSchedules.Remove(courseSchedule);
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Modify the time of a Course.
+        /// </summary>
+        /// <param name="startTime">The start time of the Course.</param>
+        /// <param name="timeBlocks">The number of time blocks the Course spans.</param>
+        /// <returns>True if the modifications were successful.</returns>
+        public bool ModifyCourse(CourseSchedule courseSchedule, Schedule schedule)
+        {
+            courseSchedule.Schedule = schedule;
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Modify the capacity of a Course.
+        /// </summary>
+        /// <param name="capacity">The capacity of the course.</param>
+        /// <returns>True if the modifications were successful.</returns>
+        public bool ModifyCourse(CourseSchedule courseSchedule, short capacity)
+        {
+            courseSchedule.Capacity = capacity;
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Modify all aspects of a Course.
+        /// </summary>
+        /// <param name="startTime">The start time of the Course.</param>
+        /// <param name="timeBlocks">The number of time blocks the Course spans.</param>
+        /// <param name="capacity">The capacity of the course.</param>
+        /// <returns>True if the modifications were successful.</returns>
+        public bool ModifyCourse(CourseSchedule courseSchedule, Schedule schedule, short capacity)
+        {
+            courseSchedule.Schedule = schedule;
+            courseSchedule.Capacity = capacity;
+            return db.SaveChanges() > 0;
+        }
     }
 }
