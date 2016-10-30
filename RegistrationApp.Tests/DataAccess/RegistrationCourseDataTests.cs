@@ -180,5 +180,26 @@ namespace RegistrationApp.Tests.DataAccess
             Assert.Equal("Jim", students[0].Person.Name);
             Assert.Equal("Sherley", students[1].Person.Name);
         }
+
+        /// <summary>
+        /// Make sure that we can get a Course by id.
+        /// </summary>
+        [Fact]
+        public void Test_GetCourse()
+        {
+            MockDatabase<CourseSchedule> mockDB = new MockDatabase<CourseSchedule>(c => c.CourseSchedules);
+            RegistrationData data = new RegistrationData(mockDB.Context);
+
+            CourseSchedule schedule = new CourseSchedule
+            {
+                CourseScheduleId = 3
+            };
+
+            mockDB.AddDataEntry(schedule);
+
+            CourseSchedule foundSchedule = data.GetCourse(3);
+            
+            mockDB.MockSet.Verify(m => m.Find(It.IsAny<int>()), Times.Once());
+        }
     }
 }

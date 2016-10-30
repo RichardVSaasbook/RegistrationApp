@@ -128,5 +128,15 @@ namespace RegistrationApp.DataAccess
 
             return students;
         }
+
+        /// <summary>
+        /// Get a CourseSchedule by its Id.
+        /// </summary>
+        /// <param name="courseScheduleId">The Id of the CourseSchedule to find.</param>
+        /// <returns>The course schedule.</returns>
+        public CourseSchedule GetCourse(int courseScheduleId)
+        {
+            return db.CourseSchedules.Find(courseScheduleId);
+        }
     }
 }
