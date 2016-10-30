@@ -66,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationCourseData.cs" />
     <Compile Include="RegistrationData.cs" />
+    <Compile Include="RegistrationRegistrarData.cs" />
     <Compile Include="RegistrationStudentData.cs" />
     <Compile Include="RegistrationModel.Context.cs">
       <AutoGen>True</AutoGen>
