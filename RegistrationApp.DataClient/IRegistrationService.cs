@@ -18,7 +18,7 @@ namespace RegistrationApp.DataClient
         bool DropCourse(StudentDAO studentDAO, StudentScheduleDAO studentScheduleDAO);
 
         [OperationContract]
-        List<CourseScheduleDAO> ListStudentSchedule(StudentDAO studentDAO);
+        List<CourseScheduleDAO> ListStudentSchedule(int studentId);
         #endregion
     }
 }

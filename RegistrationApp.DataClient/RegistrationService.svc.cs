@@ -51,8 +51,9 @@ namespace RegistrationApp.DataClient
         /// </summary>
         /// <param name="studentDAO">The Student to grab a list of.</param>
         /// <returns>The List of CourseSchedules.</returns>
-        public List<CourseScheduleDAO> ListStudentSchedule(StudentDAO studentDAO)
+        public List<CourseScheduleDAO> ListStudentSchedule(int studentId)
         {
+            StudentDAO studentDAO = Mapper.MapToStudentDAO(data.FindOrCreateStudent(studentId));
             List<CourseScheduleDAO> courseScheduleDAOs = new List<CourseScheduleDAO>();
 
             foreach (CourseSchedule courseSchedule in data.ListStudentSchedule(Mapper.MapToStudent(studentDAO)))
