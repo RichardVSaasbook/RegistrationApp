@@ -123,6 +123,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -138,9 +139,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Service References\RegistrationServiceReference\RegistrationWeb.Client.RegistrationServiceReference.CourseScheduleDAO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />

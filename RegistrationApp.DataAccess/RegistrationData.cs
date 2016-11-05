@@ -100,7 +100,7 @@ namespace RegistrationApp.DataAccess
         /// <param name="dbSet">The DbSet to search through.</param>
         /// <param name="id">The Id of the resource to find.</param>
         /// <returns>The found or created resource.</returns>
-        private T FindOrCreate<T>(DbSet<T> dbSet, params int[] id) where T : class, new()
+        private T FindOrCreate<T>(DbSet<T> dbSet, params object[] id) where T : class, new()
         {
             T entity = dbSet.Find(id);
 

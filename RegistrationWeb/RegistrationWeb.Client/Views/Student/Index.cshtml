@@ -1,14 +1,16 @@
 ﻿@using RegistrationWeb.Domain.RegistrationServiceReference
-@model IEnumerable<StudentDAO>
+@model IEnumerable<CourseScheduleDAO>
 
 @{
     ViewBag.Title = "Index";
 }
 
-@foreach (StudentDAO s in Model)
+@foreach (CourseScheduleDAO s in Model)
 {
     <div>
-        <h3>@s.Person.Name</h3>
-        <h4>@s.MajorDepartment.Name</h4>
+        <h3>@s.Course.Title</h3>
+        <h4>Professor: @s.Professor.Name</h4>
+        <h4>Start Time: @s.Schedule.StartTime</h4>
+        <h4>Time Blocks: @s.Schedule.TimeBlocks</h4>
     </div>
 }
