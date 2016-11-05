@@ -16,20 +16,7 @@ namespace RegistrationApp.DataAccess
         /// <returns>True if the registration was successful.</returns>
         public bool RegisterForCourse(Student student, CourseSchedule courseSchedule)
         {
-            bool successful = true;
-
-            if (CanRegisterForCourse(student, courseSchedule))
-            {
-                courseSchedule.StudentSchedules.Add(new StudentSchedule
-                {
-                    Student = student,
-                    CourseSchedule = courseSchedule,
-                    Enrolled = true
-                });
-                successful = db.SaveChanges() > 0;
-            }
-
-            return successful;
+            return CreateStudentSchedule(student, courseSchedule, true);
         }
 
         /// <summary>
@@ -40,20 +27,7 @@ namespace RegistrationApp.DataAccess
         /// <returns>True if the hold was successful.</returns>
         public bool HoldCourse(Student student, CourseSchedule courseSchedule)
         {
-            bool successful = true;
-
-            if (CanRegisterForCourse(student, courseSchedule))
-            {
-                courseSchedule.StudentSchedules.Add(new StudentSchedule
-                {
-                    Student = student,
-                    CourseSchedule = courseSchedule,
-                    Enrolled = false
-                });
-                successful = db.SaveChanges() > 0;
-            }
-
-            return successful;
+            return CreateStudentSchedule(student, courseSchedule, false);
         }
 
         /// <summary>
@@ -64,7 +38,7 @@ namespace RegistrationApp.DataAccess
         /// <returns>True if the drop was successful.</returns>
         public bool DropCourse(Student student, StudentSchedule studentSchedule)
         {
-            bool successful = student.StudentSchedules.Remove(studentSchedule);
+            bool successful = db.StudentSchedules.Remove(studentSchedule) != null;
 
             if (successful)
             {
@@ -123,6 +97,31 @@ namespace RegistrationApp.DataAccess
                         successful = false;
                     }
                 }
+            }
+
+            return successful;
+        }
+
+        /// <summary>
+        /// Create a new StudentSchedule with the given Enrolled value.
+        /// </summary>
+        /// <param name="student"></param>
+        /// <param name="courseSchedule"></param>
+        /// <param name="enrolled"></param>
+        /// <returns></returns>
+        private bool CreateStudentSchedule(Student student, CourseSchedule courseSchedule, bool enrolled)
+        {
+            bool successful = true;
+
+            if (CanRegisterForCourse(student, courseSchedule))
+            {
+                db.StudentSchedules.Add(new StudentSchedule
+                {
+                    Student = student,
+                    CourseSchedule = courseSchedule,
+                    Enrolled = enrolled
+                });
+                successful = db.SaveChanges() > 0;
             }
 
             return successful;

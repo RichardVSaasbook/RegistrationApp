@@ -241,3 +241,7 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /RegistrationApp.Tests/App.Config
+RegistrationApp.DataAccess/App.Config
+/RegistrationApp.DataClient/Web.Release.config
+/RegistrationApp.DataClient/Web.Debug.config
+/RegistrationApp.DataClient/Web.config
