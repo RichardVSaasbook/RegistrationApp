@@ -5,12 +5,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 
 <body>
-    <div>
-        @RenderBody()
+    <div class="container-fluid">
+        <div class="navbar navbar-inverse" role="navigation">
+            <a class="navbar-brand" href="#">Registration App</a>
+            
+            <ul class="nav navbar-nav">
+                <li><a href="#">Student</a></li>
+                <li><a href="#">Registrar</a></li>
+            </ul>
+        </div>
+        <div class="row panel">
+            <div id="sub-nav" class="col-xs-3">
+                Sub navigation.
+            </div>
+
+            <div class="col-xs-9">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 </body>
 

@@ -22,6 +22,12 @@ namespace RegistrationApp.DataClient.Models
         public TimeSpan StartTime { get; set; }
 
         /// <summary>
+        /// The EndTime of the Schedule block.
+        /// </summary>
+        [DataMember]
+        public TimeSpan EndTime { get; set; }
+
+        /// <summary>
         /// The number of TimeBlocks the Schedule spans.
         /// </summary>
         [DataMember]

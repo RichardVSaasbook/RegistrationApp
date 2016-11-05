@@ -1,5 +1,6 @@
 ﻿using RegistrationApp.DataAccess;
 using RegistrationApp.DataClient.Models;
+using RegistrationApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -189,6 +190,7 @@ namespace RegistrationApp.DataClient
             {
                 Id = schedule.ScheduleId,
                 StartTime = schedule.StartTime,
+                EndTime = ScheduleTime.GetEndTime(schedule.StartTime, schedule.TimeBlocks),
                 TimeBlocks = schedule.TimeBlocks
             };
         }

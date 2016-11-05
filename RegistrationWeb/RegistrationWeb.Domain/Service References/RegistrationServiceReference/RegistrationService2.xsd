@@ -43,6 +43,7 @@
   <xs:element name="CourseDAO" nillable="true" type="tns:CourseDAO" />
   <xs:complexType name="ScheduleDAO">
     <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" type="ser:duration" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="StartTime" type="ser:duration" />
       <xs:element minOccurs="0" name="TimeBlocks" type="xs:short" />

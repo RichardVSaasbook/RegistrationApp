@@ -105,6 +105,10 @@
       <Project>{F8CA9B3A-0D15-4BD7-AA65-C23E8F777932}</Project>
       <Name>RegistrationApp.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RegistrationApp.Utilities\RegistrationApp.Utilities.csproj">
+      <Project>{bf73a78f-b008-4450-bf1d-1b60de7782db}</Project>
+      <Name>RegistrationApp.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

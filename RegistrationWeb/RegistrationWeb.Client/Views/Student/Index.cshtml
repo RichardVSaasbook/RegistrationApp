@@ -7,10 +7,33 @@
 
 @foreach (CourseScheduleDAO s in Model)
 {
-    <div>
-        <h3>@s.Course.Title</h3>
-        <h4>Professor: @s.Professor.Name</h4>
-        <h4>Start Time: @s.Schedule.StartTime</h4>
-        <h4>Time Blocks: @s.Schedule.TimeBlocks</h4>
-    </div>
+    <table class="table table-hover">
+        <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+        </colgroup>
+
+        <thead>
+            <tr>
+                <td colspan="2"><h3>@s.Course.Title</h3></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>Professor</th>
+                <td>@s.Professor.Name</td>
+            </tr>
+
+            <tr>
+                <th>Start Time</th>
+                <td>@Html.TimeFormat(s.Schedule.StartTime)</td>
+            </tr>
+
+            <tr>
+                <th>End Time</th>
+                <td>@Html.TimeFormat(s.Schedule.EndTime)</td>
+            </tr>
+        </tbody>
+    </table>
 }
