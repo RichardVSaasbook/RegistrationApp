@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/registrationdataservice/RegistrationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="StudentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MajorDepartment" nillable="true" type="tns:DepartmentDAO" />
+      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:PersonDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StudentDAO" nillable="true" type="tns:StudentDAO" />
+  <xs:complexType name="DepartmentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DepartmentDAO" nillable="true" type="tns:DepartmentDAO" />
+  <xs:complexType name="PersonDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonDAO" nillable="true" type="tns:PersonDAO" />
+  <xs:complexType name="CourseScheduleDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Capacity" type="xs:short" />
+      <xs:element minOccurs="0" name="Course" nillable="true" type="tns:CourseDAO" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Professor" nillable="true" type="tns:PersonDAO" />
+      <xs:element minOccurs="0" name="Schedule" nillable="true" type="tns:ScheduleDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseScheduleDAO" nillable="true" type="tns:CourseScheduleDAO" />
+  <xs:complexType name="CourseDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseDepartment" nillable="true" type="tns:DepartmentDAO" />
+      <xs:element minOccurs="0" name="Credit" type="xs:short" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseDAO" nillable="true" type="tns:CourseDAO" />
+  <xs:complexType name="ScheduleDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="StartTime" type="ser:duration" />
+      <xs:element minOccurs="0" name="TimeBlocks" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleDAO" nillable="true" type="tns:ScheduleDAO" />
+  <xs:complexType name="StudentScheduleDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseSchedule" nillable="true" type="tns:CourseScheduleDAO" />
+      <xs:element minOccurs="0" name="Enrolled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Student" nillable="true" type="tns:StudentDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StudentScheduleDAO" nillable="true" type="tns:StudentScheduleDAO" />
+  <xs:complexType name="ArrayOfCourseScheduleDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseScheduleDAO" nillable="true" type="tns:CourseScheduleDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseScheduleDAO" nillable="true" type="tns:ArrayOfCourseScheduleDAO" />
+</xs:schema>

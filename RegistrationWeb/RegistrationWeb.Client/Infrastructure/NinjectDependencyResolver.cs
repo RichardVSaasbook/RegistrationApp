@@ -1,4 +1,6 @@
 ﻿using Ninject;
+using RegistrationWeb.Domain.Abstract;
+using RegistrationWeb.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +51,7 @@ namespace RegistrationWeb.Client.Infrastructure
         /// </summary>
         private void AddBindings()
         {
-
+            kernel.Bind<IRegistrationRepository>().To<ServiceRegistrationRepository>();
         }
     }
 }

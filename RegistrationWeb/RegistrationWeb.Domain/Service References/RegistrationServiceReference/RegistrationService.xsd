@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/registrationdataservice/RegistrationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" />
+  <xs:element name="RegisterForCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q1:StudentDAO" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="courseScheduleDAO" nillable="true" type="q2:CourseScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterForCourseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterForCourseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HoldCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q3:StudentDAO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="courseScheduleDAO" nillable="true" type="q4:CourseScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HoldCourseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HoldCourseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DropCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q5:StudentDAO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentScheduleDAO" nillable="true" type="q6:StudentScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DropCourseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DropCourseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListStudentSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q7:StudentDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListStudentScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentScheduleResult" nillable="true" type="q8:ArrayOfCourseScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

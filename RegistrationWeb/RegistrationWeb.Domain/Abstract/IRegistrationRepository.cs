@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationWeb.Domain.RegistrationServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace RegistrationWeb.Domain.Abstract
     /// </summary>
     public interface IRegistrationRepository
     {
+        IEnumerable<CourseScheduleDAO> ListStudentSchedule(StudentDAO student);
     }
 }

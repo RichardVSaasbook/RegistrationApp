@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="df179e5b-8fc6-4425-962d-e627619794e0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/registrationdataservice/RegistrationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RegistrationService.wsdl" MetadataType="Wsdl" ID="3562c1c3-0f20-4314-9b73-fd7d216d4e67" SourceId="1" SourceUrl="http://localhost/registrationdataservice/RegistrationService.svc?wsdl" />
+    <MetadataFile FileName="RegistrationService.xsd" MetadataType="Schema" ID="07cbd5ff-f6e3-4062-b223-2b020c363d23" SourceId="1" SourceUrl="http://localhost/registrationdataservice/RegistrationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RegistrationService1.xsd" MetadataType="Schema" ID="9dfc888e-c5ab-44fa-aa65-e2971096b8dc" SourceId="1" SourceUrl="http://localhost/registrationdataservice/RegistrationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RegistrationService2.xsd" MetadataType="Schema" ID="4c9fb51c-7437-42b9-bfe9-58c0a8f09618" SourceId="1" SourceUrl="http://localhost/registrationdataservice/RegistrationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RegistrationService.disco" MetadataType="Disco" ID="923e430c-2e9c-4e8a-8b3a-4712bc108cc9" SourceId="1" SourceUrl="http://localhost/registrationdataservice/RegistrationService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
