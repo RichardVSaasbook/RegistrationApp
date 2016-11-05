@@ -17,9 +17,9 @@ namespace RegistrationWeb.Domain.Concrete
         /// </summary>
         /// <param name="student">The Student to get courses from.</param>
         /// <returns>The List of registered Courses.</returns>
-        public IEnumerable<CourseScheduleDAO> ListStudentSchedule(StudentDAO student)
+        public IEnumerable<CourseScheduleDAO> ListStudentSchedule(int studentId)
         {
-            return rsc.ListStudentSchedule(student);
+            return rsc.ListStudentSchedule(studentId);
         }
     }
 }

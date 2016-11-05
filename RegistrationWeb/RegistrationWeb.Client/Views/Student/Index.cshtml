@@ -1,0 +1,14 @@
+﻿@using RegistrationWeb.Domain.RegistrationServiceReference
+@model IEnumerable<StudentDAO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (StudentDAO s in Model)
+{
+    <div>
+        <h3>@s.Person.Name</h3>
+        <h4>@s.MajorDepartment.Name</h4>
+    </div>
+}

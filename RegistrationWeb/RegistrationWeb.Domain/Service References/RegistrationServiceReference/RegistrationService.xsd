@@ -49,14 +49,14 @@
   <xs:element name="ListStudentSchedule">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q7:StudentDAO" />
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListStudentScheduleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentScheduleResult" nillable="true" type="q8:ArrayOfCourseScheduleDAO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentScheduleResult" nillable="true" type="q7:ArrayOfCourseScheduleDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
