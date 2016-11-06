@@ -84,6 +84,8 @@ namespace RegistrationApp.DataAccess
         public bool ModifyCourse(CourseSchedule courseSchedule, Schedule schedule)
         {
             courseSchedule.Schedule = schedule;
+            var entry = db.Entry(courseSchedule);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() > 0;
         }
 
@@ -95,6 +97,8 @@ namespace RegistrationApp.DataAccess
         public bool ModifyCourse(CourseSchedule courseSchedule, short capacity)
         {
             courseSchedule.Capacity = capacity;
+            var entry = db.Entry(courseSchedule);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() > 0;
         }
 
@@ -109,6 +113,8 @@ namespace RegistrationApp.DataAccess
         {
             courseSchedule.Schedule = schedule;
             courseSchedule.Capacity = capacity;
+            var entry = db.Entry(courseSchedule);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() > 0;
         }
 
@@ -146,6 +152,11 @@ namespace RegistrationApp.DataAccess
         public List<CourseSchedule> ListCourses()
         {
             return db.CourseSchedules.ToList();
+        }
+
+        public List<Course> ListCourseInformation()
+        {
+            return db.Courses.ToList();
         }
     }
 }

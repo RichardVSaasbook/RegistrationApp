@@ -1,0 +1,50 @@
+﻿@model RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO
+
+<table class="table table-hover">
+    <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <td><h3>@Model.Course.Title</h3></td>
+            <td style="vertical-align: bottom">
+                @using (Html.BeginRouteForm("UnscheduleCourse", new { courseScheduleId = Model.Id }))
+                {
+                    @Html.Hidden("redirectSuccess", "Index")
+                    @Html.Hidden("redirectFailure", "Index")
+                    <button type="submit" data-toggle="tooltip" title="Unschedule Course" class="btn btn-danger pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                }
+
+                <a href="/course/@Model.Id/edit" data-toggle="tooltip" title="Edit Course" class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Professor</th>
+            <td>@Model.Professor.Name</td>
+        </tr>
+
+        <tr>
+            <th>Start Time</th>
+            <td>@Html.TimeFormat(Model.Schedule.StartTime)</td>
+        </tr>
+
+        <tr>
+            <th>End Time</th>
+            <td>@Html.TimeFormat(Model.Schedule.EndTime)</td>
+        </tr>
+
+        <tr>
+            <th>Students Enrolled</th>
+            <td>@Model.Enrolled / @Model.Capacity</td>
+        </tr>
+    </tbody>
+</table>

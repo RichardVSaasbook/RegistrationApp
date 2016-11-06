@@ -31,6 +31,39 @@ namespace RegistrationApp.DataClient
 
         [OperationContract]
         StudentDAO GetStudent(int studentId);
+
+        [OperationContract]
+        List<CourseDAO> ListCourseInformation();
+
+        [OperationContract]
+        bool ScheduleCourse(CourseScheduleDAO courseSchedule);
+
+        [OperationContract]
+        bool CancelCourse(int courseScheduleId);
+
+        [OperationContract]
+        bool ModifyCourse(CourseScheduleDAO courseSchedule);
+
+        [OperationContract]
+        List<StudentDAO> ListEnrolledStudents(int courseId);
+
+        [OperationContract]
+        List<ScheduleDAO> ListSchedules();
+
+        [OperationContract]
+        List<PersonDAO> ListPeople();
+
+        [OperationContract]
+        List<CourseScheduleDAO> ListOpenCourses();
+
+        [OperationContract]
+        List<CourseScheduleDAO> ListFullCourses();
+
+        [OperationContract]
+        bool AddStudent(StudentDAO student);
+
+        [OperationContract]
+        bool RemoveStudent(int studentId);
         #endregion
     }
 }

@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -157,6 +158,7 @@
     <Compile Include="HtmlHelpers\NavHelpers.cs" />
     <Compile Include="HtmlHelpers\TimeHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\CourseListViewModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\NullMessageModel.cs" />
     <Compile Include="Models\StudentCourseViewModel.cs" />
@@ -192,6 +194,9 @@
     <Content Include="Views\Shared\StudentBookmarks.cshtml" />
     <Content Include="Views\Shared\Course.cshtml" />
     <Content Include="Views\Student\ShowCourses.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Shared\CourseInfo.cshtml" />
+    <Content Include="Views\Shared\CourseNav.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

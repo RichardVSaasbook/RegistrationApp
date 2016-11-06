@@ -1,0 +1,11 @@
+﻿@model RegistrationWeb.Client.Models.CourseListViewModel
+
+@{
+    ViewBag.Title = "Courses Index";
+}
+
+@section Sidebar {
+    @Html.CourseNav(Model)
+}
+
+&larr; Select a course.

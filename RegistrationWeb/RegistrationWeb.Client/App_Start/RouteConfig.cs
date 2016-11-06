@@ -19,6 +19,7 @@ namespace RegistrationWeb.Client
                 new { controller = "Home", action = "Index" }
             );
 
+            #region Students
             routes.MapRoute(
                 null,
                 "student",
@@ -59,6 +60,25 @@ namespace RegistrationWeb.Client
                 "BookmarkStudentCourse",
                 "student/{studentId}/bookmark/{courseScheduleId}",
                 new { controller = "Student", action = "BookmarkCourse" }
+            );
+            #endregion
+
+            routes.MapRoute(
+                null,
+                "course",
+                new { controller = "Course", action = "Index" }
+            );
+
+            routes.MapRoute(
+                null,
+                "course/{courseScheduleId}/edit",
+                new { controller = "Course", action = "Edit" }
+            );
+
+            routes.MapRoute(
+                "UnscheduleCourse",
+                "course/{courseScheduleId}/unschedule",
+                new { controller = "Course", action = "Unschedule" }
             );
         }
     }

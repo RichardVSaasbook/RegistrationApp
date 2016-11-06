@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace RegistrationApp.DataAccess
 {
@@ -91,6 +93,16 @@ namespace RegistrationApp.DataAccess
         public StudentSchedule FindOrCreateStudentSchedule(int studentId, int courseScheduleId)
         {
             return FindOrCreate(db.StudentSchedules, studentId, courseScheduleId);
+        }
+
+        public List<Person> ListPeople()
+        {
+            return db.People.ToList();
+        }
+
+        public List<Schedule> ListSchedules()
+        {
+            return db.Schedules.ToList();
         }
 
         /// <summary>
