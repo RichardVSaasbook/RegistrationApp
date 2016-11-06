@@ -15,18 +15,21 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudentDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentScheduleDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
     [System.SerializableAttribute()]
-    public partial class StudentDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class StudentScheduleDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO MajorDepartmentField;
+        private RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO CourseScheduleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO PersonField;
+        private bool EnrolledField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO StudentField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,149 +42,40 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO MajorDepartment {
+        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO CourseSchedule {
             get {
-                return this.MajorDepartmentField;
+                return this.CourseScheduleField;
             }
             set {
-                if ((object.ReferenceEquals(this.MajorDepartmentField, value) != true)) {
-                    this.MajorDepartmentField = value;
-                    this.RaisePropertyChanged("MajorDepartment");
+                if ((object.ReferenceEquals(this.CourseScheduleField, value) != true)) {
+                    this.CourseScheduleField = value;
+                    this.RaisePropertyChanged("CourseSchedule");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO Person {
+        public bool Enrolled {
             get {
-                return this.PersonField;
+                return this.EnrolledField;
             }
             set {
-                if ((object.ReferenceEquals(this.PersonField, value) != true)) {
-                    this.PersonField = value;
-                    this.RaisePropertyChanged("Person");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DepartmentDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
-    [System.SerializableAttribute()]
-    public partial class DepartmentDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((this.EnrolledField.Equals(value) != true)) {
+                    this.EnrolledField = value;
+                    this.RaisePropertyChanged("Enrolled");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO Student {
             get {
-                return this.NameField;
+                return this.StudentField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
-    [System.SerializableAttribute()]
-    public partial class PersonDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
+                    this.StudentField = value;
+                    this.RaisePropertyChanged("Student");
                 }
             }
         }
@@ -210,6 +104,9 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RegistrationWeb.Domain.RegistrationServiceReference.CourseDAO CourseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EnrolledField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -257,6 +154,19 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Enrolled {
+            get {
+                return this.EnrolledField;
+            }
+            set {
+                if ((this.EnrolledField.Equals(value) != true)) {
+                    this.EnrolledField = value;
+                    this.RaisePropertyChanged("Enrolled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -291,6 +201,67 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
                 if ((object.ReferenceEquals(this.ScheduleField, value) != true)) {
                     this.ScheduleField = value;
                     this.RaisePropertyChanged("Schedule");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
+    [System.SerializableAttribute()]
+    public partial class StudentDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO MajorDepartmentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO PersonField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO MajorDepartment {
+            get {
+                return this.MajorDepartmentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MajorDepartmentField, value) != true)) {
+                    this.MajorDepartmentField = value;
+                    this.RaisePropertyChanged("MajorDepartment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO Person {
+            get {
+                return this.PersonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PersonField, value) != true)) {
+                    this.PersonField = value;
+                    this.RaisePropertyChanged("Person");
                 }
             }
         }
@@ -400,6 +371,67 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PersonDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
+    [System.SerializableAttribute()]
+    public partial class PersonDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ScheduleDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
     [System.SerializableAttribute()]
     public partial class ScheduleDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -493,21 +525,18 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudentScheduleDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DepartmentDAO", Namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models")]
     [System.SerializableAttribute()]
-    public partial class StudentScheduleDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DepartmentDAO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO CourseScheduleField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool EnrolledField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO StudentField;
+        private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -520,40 +549,27 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO CourseSchedule {
+        public int Id {
             get {
-                return this.CourseScheduleField;
+                return this.IdField;
             }
             set {
-                if ((object.ReferenceEquals(this.CourseScheduleField, value) != true)) {
-                    this.CourseScheduleField = value;
-                    this.RaisePropertyChanged("CourseSchedule");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Enrolled {
+        public string Name {
             get {
-                return this.EnrolledField;
+                return this.NameField;
             }
             set {
-                if ((this.EnrolledField.Equals(value) != true)) {
-                    this.EnrolledField = value;
-                    this.RaisePropertyChanged("Enrolled");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO Student {
-            get {
-                return this.StudentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
-                    this.StudentField = value;
-                    this.RaisePropertyChanged("Student");
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -573,34 +589,52 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
     public interface IRegistrationService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/RegisterForCourse", ReplyAction="http://tempuri.org/IRegistrationService/RegisterForCourseResponse")]
-        bool RegisterForCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        bool RegisterForCourse(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/RegisterForCourse", ReplyAction="http://tempuri.org/IRegistrationService/RegisterForCourseResponse")]
-        System.Threading.Tasks.Task<bool> RegisterForCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        System.Threading.Tasks.Task<bool> RegisterForCourseAsync(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/HoldCourse", ReplyAction="http://tempuri.org/IRegistrationService/HoldCourseResponse")]
-        bool HoldCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        bool HoldCourse(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/HoldCourse", ReplyAction="http://tempuri.org/IRegistrationService/HoldCourseResponse")]
-        System.Threading.Tasks.Task<bool> HoldCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        System.Threading.Tasks.Task<bool> HoldCourseAsync(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/DropCourse", ReplyAction="http://tempuri.org/IRegistrationService/DropCourseResponse")]
-        bool DropCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO);
+        bool DropCourse(int studentId, int studentScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/DropCourse", ReplyAction="http://tempuri.org/IRegistrationService/DropCourseResponse")]
-        System.Threading.Tasks.Task<bool> DropCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO);
+        System.Threading.Tasks.Task<bool> DropCourseAsync(int studentId, int studentScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentSchedule", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse")]
-        RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListStudentSchedule(int studentId);
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentSchedule(int studentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentSchedule", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse")]
-        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId);
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentScheduleAsync(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentBookmarks", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentBookmarksResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentBookmarks(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentBookmarks", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentBookmarksResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentBookmarksAsync(int studentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
         RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListCourses", ReplyAction="http://tempuri.org/IRegistrationService/ListCoursesResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListCourses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListCourses", ReplyAction="http://tempuri.org/IRegistrationService/ListCoursesResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListCoursesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/GetStudent", ReplyAction="http://tempuri.org/IRegistrationService/GetStudentResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO GetStudent(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/GetStudent", ReplyAction="http://tempuri.org/IRegistrationService/GetStudentResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO> GetStudentAsync(int studentId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -630,36 +664,44 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool RegisterForCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.RegisterForCourse(studentDAO, courseScheduleDAO);
+        public bool RegisterForCourse(int studentId, int courseScheduleId) {
+            return base.Channel.RegisterForCourse(studentId, courseScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterForCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.RegisterForCourseAsync(studentDAO, courseScheduleDAO);
+        public System.Threading.Tasks.Task<bool> RegisterForCourseAsync(int studentId, int courseScheduleId) {
+            return base.Channel.RegisterForCourseAsync(studentId, courseScheduleId);
         }
         
-        public bool HoldCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.HoldCourse(studentDAO, courseScheduleDAO);
+        public bool HoldCourse(int studentId, int courseScheduleId) {
+            return base.Channel.HoldCourse(studentId, courseScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> HoldCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.HoldCourseAsync(studentDAO, courseScheduleDAO);
+        public System.Threading.Tasks.Task<bool> HoldCourseAsync(int studentId, int courseScheduleId) {
+            return base.Channel.HoldCourseAsync(studentId, courseScheduleId);
         }
         
-        public bool DropCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO) {
-            return base.Channel.DropCourse(studentDAO, studentScheduleDAO);
+        public bool DropCourse(int studentId, int studentScheduleId) {
+            return base.Channel.DropCourse(studentId, studentScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> DropCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO) {
-            return base.Channel.DropCourseAsync(studentDAO, studentScheduleDAO);
+        public System.Threading.Tasks.Task<bool> DropCourseAsync(int studentId, int studentScheduleId) {
+            return base.Channel.DropCourseAsync(studentId, studentScheduleId);
         }
         
-        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListStudentSchedule(int studentId) {
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentSchedule(int studentId) {
             return base.Channel.ListStudentSchedule(studentId);
         }
         
-        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId) {
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentScheduleAsync(int studentId) {
             return base.Channel.ListStudentScheduleAsync(studentId);
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentBookmarks(int studentId) {
+            return base.Channel.ListStudentBookmarks(studentId);
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentBookmarksAsync(int studentId) {
+            return base.Channel.ListStudentBookmarksAsync(studentId);
         }
         
         public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents() {
@@ -668,6 +710,22 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         
         public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync() {
             return base.Channel.ListStudentsAsync();
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListCourses() {
+            return base.Channel.ListCourses();
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListCoursesAsync() {
+            return base.Channel.ListCoursesAsync();
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO GetStudent(int studentId) {
+            return base.Channel.GetStudent(studentId);
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO> GetStudentAsync(int studentId) {
+            return base.Channel.GetStudentAsync(studentId);
         }
     }
 }

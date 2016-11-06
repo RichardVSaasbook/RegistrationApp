@@ -6,9 +6,9 @@ using System.Web;
 
 namespace RegistrationWeb.Client.Models
 {
-    public class StudentCourseViewModel
+    public class StudentListCoursesViewModel
     {
         public StudentsListViewModel StudentsListViewModel { get; set; }
-        public IEnumerable<StudentScheduleDAO> CourseSchedules { get; set; }
+        public IEnumerable<CourseScheduleDAO> CourseSchedules { get; set; }
     }
 }

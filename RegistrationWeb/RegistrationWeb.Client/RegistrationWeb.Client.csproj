@@ -125,6 +125,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO.datasource" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO.datasource" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -152,10 +153,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\MessageHelpers.cs" />
     <Compile Include="HtmlHelpers\NavHelpers.cs" />
     <Compile Include="HtmlHelpers\TimeHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\NullMessageModel.cs" />
     <Compile Include="Models\StudentCourseViewModel.cs" />
+    <Compile Include="Models\StudentListCoursesViewModel.cs" />
     <Compile Include="Models\StudentsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\RegistrationServiceReference\Reference.cs">
@@ -182,6 +187,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MainNav.cshtml" />
     <Content Include="Views\Student\Show.cshtml" />
+    <Content Include="Views\Student\CourseBookmarks.cshtml" />
+    <Content Include="Views\Shared\StudentNav.cshtml" />
+    <Content Include="Views\Shared\StudentBookmarks.cshtml" />
+    <Content Include="Views\Shared\Course.cshtml" />
+    <Content Include="Views\Student\ShowCourses.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

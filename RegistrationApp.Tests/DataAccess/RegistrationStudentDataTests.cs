@@ -300,11 +300,11 @@ namespace RegistrationApp.Tests.DataAccess
 
             mockDB.AddDataEntry(student);
 
-            List<CourseSchedule> courses = data.ListStudentSchedule(student);
+            List<StudentSchedule> courses = data.ListStudentSchedule(student);
 
             Assert.Equal(2, courses.Count);
-            Assert.Equal("Intro to Computer Science", courses[0].Course.Title);
-            Assert.Equal("Calculus IV", courses[1].Course.Title);
+            Assert.Equal("Intro to Computer Science", courses[0].CourseSchedule.Course.Title);
+            Assert.Equal("Calculus IV", courses[1].CourseSchedule.Course.Title);
         }
     }
 }

@@ -30,9 +30,21 @@ namespace RegistrationApp.DataClient
         /// <param name="studentDAO">The Student to drop the Course on.</param>
         /// <param name="studentScheduleDAO">The Course to drop.</param>
         /// <returns>True if the drop was successful.</returns>
-        public bool DropCourse(StudentDAO studentDAO, StudentScheduleDAO studentScheduleDAO)
+        public bool DropCourse(int studentId, int courseScheduleId)
         {
-            return data.DropCourse(Mapper.MapToStudent(studentDAO), Mapper.MapToStudentSchedule(studentScheduleDAO));
+            RegistrationData data = new RegistrationData();
+            return data.DropCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateStudentSchedule(courseScheduleId, studentId));
+        }
+
+        /// <summary>
+        /// Get the Student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public StudentDAO GetStudent(int studentId)
+        {
+            RegistrationData data = new RegistrationData();
+            return Mapper.MapToStudentDAO(data.FindOrCreateStudent(studentId));
         }
 
         /// <summary>
@@ -41,9 +53,44 @@ namespace RegistrationApp.DataClient
         /// <param name="studentDAO">The Student to hold the Course for.</param>
         /// <param name="courseScheduleDAO">The Course to hold.</param>
         /// <returns>True if the hold was successful.</returns>
-        public bool HoldCourse(StudentDAO studentDAO, CourseScheduleDAO courseScheduleDAO)
+        public bool HoldCourse(int studentId, int courseScheduleId)
         {
-            return data.HoldCourse(Mapper.MapToStudent(studentDAO), Mapper.MapToCourseSchedule(courseScheduleDAO));
+            RegistrationData data = new RegistrationData();
+            return data.HoldCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateCourseSchedule(courseScheduleId));
+        }
+
+        /// <summary>
+        /// List all of the Courses.
+        /// </summary>
+        /// <returns>The List of all Courses.</returns>
+        public List<CourseScheduleDAO> ListCourses()
+        {
+            List<CourseScheduleDAO> courseScheduleDAOs = new List<CourseScheduleDAO>();
+            
+            foreach (CourseSchedule courseSchedule in data.ListCourses())
+            {
+                courseScheduleDAOs.Add(Mapper.MapToCourseScheduleDAO(courseSchedule));
+            }
+
+            return courseScheduleDAOs;
+        }
+
+        /// <summary>
+        /// List the bookmarked courses for a Student.
+        /// </summary>
+        /// <param name="studentId">The Student to List Courses for.</param>
+        /// <returns>The List of bookmarked Courses.</returns>
+        public List<StudentScheduleDAO> ListStudentBookmarks(int studentId)
+        {
+            StudentDAO studentDAO = Mapper.MapToStudentDAO(data.FindOrCreateStudent(studentId));
+            List<StudentScheduleDAO> studentScheduleDAOs = new List<StudentScheduleDAO>();
+
+            foreach (StudentSchedule studentSchedule in data.ListStudentBookmarks(Mapper.MapToStudent(studentDAO)))
+            {
+                studentScheduleDAOs.Add(Mapper.MapToStudentScheduleDAO(studentSchedule));
+            }
+
+            return studentScheduleDAOs;
         }
 
         /// <summary>
@@ -67,17 +114,17 @@ namespace RegistrationApp.DataClient
         /// </summary>
         /// <param name="studentDAO">The Student to grab a list of.</param>
         /// <returns>The List of CourseSchedules.</returns>
-        public List<CourseScheduleDAO> ListStudentSchedule(int studentId)
+        public List<StudentScheduleDAO> ListStudentSchedule(int studentId)
         {
             StudentDAO studentDAO = Mapper.MapToStudentDAO(data.FindOrCreateStudent(studentId));
-            List<CourseScheduleDAO> courseScheduleDAOs = new List<CourseScheduleDAO>();
+            List<StudentScheduleDAO> studentScheduleDAOs = new List<StudentScheduleDAO>();
 
-            foreach (CourseSchedule courseSchedule in data.ListStudentSchedule(Mapper.MapToStudent(studentDAO)))
+            foreach (StudentSchedule studentSchedule in data.ListStudentSchedule(Mapper.MapToStudent(studentDAO)))
             {
-                courseScheduleDAOs.Add(Mapper.MapToCourseScheduleDAO(courseSchedule));
+                studentScheduleDAOs.Add(Mapper.MapToStudentScheduleDAO(studentSchedule));
             }
 
-            return courseScheduleDAOs;
+            return studentScheduleDAOs;
         }
 
         /// <summary>
@@ -86,9 +133,9 @@ namespace RegistrationApp.DataClient
         /// <param name="studentDAO">The Student to register for.</param>
         /// <param name="courseScheduleDAO">The CourseSchedule to register for.</param>
         /// <returns>True if the registration was successful.</returns>
-        public bool RegisterForCourse(StudentDAO studentDAO, CourseScheduleDAO courseScheduleDAO)
+        public bool RegisterForCourse(int studentId, int courseScheduleId)
         {
-            return data.RegisterForCourse(Mapper.MapToStudent(studentDAO), Mapper.MapToCourseSchedule(courseScheduleDAO));
+            return data.RegisterForCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateCourseSchedule(courseScheduleId));
         }
     }
 }

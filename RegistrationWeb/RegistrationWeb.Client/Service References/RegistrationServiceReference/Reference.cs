@@ -16,34 +16,52 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
     public interface IRegistrationService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/RegisterForCourse", ReplyAction="http://tempuri.org/IRegistrationService/RegisterForCourseResponse")]
-        bool RegisterForCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        bool RegisterForCourse(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/RegisterForCourse", ReplyAction="http://tempuri.org/IRegistrationService/RegisterForCourseResponse")]
-        System.Threading.Tasks.Task<bool> RegisterForCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        System.Threading.Tasks.Task<bool> RegisterForCourseAsync(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/HoldCourse", ReplyAction="http://tempuri.org/IRegistrationService/HoldCourseResponse")]
-        bool HoldCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        bool HoldCourse(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/HoldCourse", ReplyAction="http://tempuri.org/IRegistrationService/HoldCourseResponse")]
-        System.Threading.Tasks.Task<bool> HoldCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO);
+        System.Threading.Tasks.Task<bool> HoldCourseAsync(int studentId, int courseScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/DropCourse", ReplyAction="http://tempuri.org/IRegistrationService/DropCourseResponse")]
-        bool DropCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO);
+        bool DropCourse(int studentId, int studentScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/DropCourse", ReplyAction="http://tempuri.org/IRegistrationService/DropCourseResponse")]
-        System.Threading.Tasks.Task<bool> DropCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO);
+        System.Threading.Tasks.Task<bool> DropCourseAsync(int studentId, int studentScheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentSchedule", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse")]
-        RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListStudentSchedule(int studentId);
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentSchedule(int studentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentSchedule", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse")]
-        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId);
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentScheduleAsync(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentBookmarks", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentBookmarksResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentBookmarks(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentBookmarks", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentBookmarksResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentBookmarksAsync(int studentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
         RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListCourses", ReplyAction="http://tempuri.org/IRegistrationService/ListCoursesResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListCourses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListCourses", ReplyAction="http://tempuri.org/IRegistrationService/ListCoursesResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListCoursesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/GetStudent", ReplyAction="http://tempuri.org/IRegistrationService/GetStudentResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO GetStudent(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/GetStudent", ReplyAction="http://tempuri.org/IRegistrationService/GetStudentResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO> GetStudentAsync(int studentId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,36 +91,44 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool RegisterForCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.RegisterForCourse(studentDAO, courseScheduleDAO);
+        public bool RegisterForCourse(int studentId, int courseScheduleId) {
+            return base.Channel.RegisterForCourse(studentId, courseScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterForCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.RegisterForCourseAsync(studentDAO, courseScheduleDAO);
+        public System.Threading.Tasks.Task<bool> RegisterForCourseAsync(int studentId, int courseScheduleId) {
+            return base.Channel.RegisterForCourseAsync(studentId, courseScheduleId);
         }
         
-        public bool HoldCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.HoldCourse(studentDAO, courseScheduleDAO);
+        public bool HoldCourse(int studentId, int courseScheduleId) {
+            return base.Channel.HoldCourse(studentId, courseScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> HoldCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseScheduleDAO) {
-            return base.Channel.HoldCourseAsync(studentDAO, courseScheduleDAO);
+        public System.Threading.Tasks.Task<bool> HoldCourseAsync(int studentId, int courseScheduleId) {
+            return base.Channel.HoldCourseAsync(studentId, courseScheduleId);
         }
         
-        public bool DropCourse(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO) {
-            return base.Channel.DropCourse(studentDAO, studentScheduleDAO);
+        public bool DropCourse(int studentId, int studentScheduleId) {
+            return base.Channel.DropCourse(studentId, studentScheduleId);
         }
         
-        public System.Threading.Tasks.Task<bool> DropCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO studentDAO, RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO studentScheduleDAO) {
-            return base.Channel.DropCourseAsync(studentDAO, studentScheduleDAO);
+        public System.Threading.Tasks.Task<bool> DropCourseAsync(int studentId, int studentScheduleId) {
+            return base.Channel.DropCourseAsync(studentId, studentScheduleId);
         }
         
-        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListStudentSchedule(int studentId) {
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentSchedule(int studentId) {
             return base.Channel.ListStudentSchedule(studentId);
         }
         
-        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId) {
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentScheduleAsync(int studentId) {
             return base.Channel.ListStudentScheduleAsync(studentId);
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[] ListStudentBookmarks(int studentId) {
+            return base.Channel.ListStudentBookmarks(studentId);
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO[]> ListStudentBookmarksAsync(int studentId) {
+            return base.Channel.ListStudentBookmarksAsync(studentId);
         }
         
         public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents() {
@@ -111,6 +137,22 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
         
         public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync() {
             return base.Channel.ListStudentsAsync();
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[] ListCourses() {
+            return base.Channel.ListCourses();
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListCoursesAsync() {
+            return base.Channel.ListCoursesAsync();
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO GetStudent(int studentId) {
+            return base.Channel.GetStudent(studentId);
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO> GetStudentAsync(int studentId) {
+            return base.Channel.GetStudentAsync(studentId);
         }
     }
 }

@@ -9,19 +9,28 @@ namespace RegistrationApp.DataClient
     {
         #region Student
         [OperationContract]
-        bool RegisterForCourse(StudentDAO studentDAO, CourseScheduleDAO courseScheduleDAO);
+        bool RegisterForCourse(int studentId, int courseScheduleId);
 
         [OperationContract]
-        bool HoldCourse(StudentDAO studentDAO, CourseScheduleDAO courseScheduleDAO);
+        bool HoldCourse(int studentId, int courseScheduleId);
 
         [OperationContract]
-        bool DropCourse(StudentDAO studentDAO, StudentScheduleDAO studentScheduleDAO);
+        bool DropCourse(int studentId, int studentScheduleId);
 
         [OperationContract]
-        List<CourseScheduleDAO> ListStudentSchedule(int studentId);
+        List<StudentScheduleDAO> ListStudentSchedule(int studentId);
+
+        [OperationContract]
+        List<StudentScheduleDAO> ListStudentBookmarks(int studentId);
 
         [OperationContract]
         List<StudentDAO> ListStudents();
+
+        [OperationContract]
+        List<CourseScheduleDAO> ListCourses();
+
+        [OperationContract]
+        StudentDAO GetStudent(int studentId);
         #endregion
     }
 }

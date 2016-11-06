@@ -112,13 +112,16 @@ namespace RegistrationApp.DataClient
         /// <returns>The CourseScheduleDAO.</returns>
         public static CourseScheduleDAO MapToCourseScheduleDAO(CourseSchedule courseSchedule)
         {
+            RegistrationData data = new RegistrationData();
+
             return new CourseScheduleDAO
             {
                 Id = courseSchedule.CourseScheduleId,
                 Professor = MapToPersonDAO(courseSchedule.Person),
                 Capacity = courseSchedule.Capacity,
                 Course = MapToCourseDAO(courseSchedule.Course),
-                Schedule = MapToScheduleDAO(courseSchedule.Schedule)
+                Schedule = MapToScheduleDAO(courseSchedule.Schedule),
+                Enrolled = data.GetNumberOfStudentsInCourse(courseSchedule)
             };
         }
 

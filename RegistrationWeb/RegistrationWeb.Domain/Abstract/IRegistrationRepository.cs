@@ -12,7 +12,11 @@ namespace RegistrationWeb.Domain.Abstract
     /// </summary>
     public interface IRegistrationRepository
     {
-        IEnumerable<CourseScheduleDAO> ListStudentSchedule(int studentId);
+        IEnumerable<StudentScheduleDAO> ListStudentSchedule(int studentId);
+        IEnumerable<StudentScheduleDAO> ListStudentBookmarks(int studentId);
         IEnumerable<StudentDAO> ListStudents();
+        IEnumerable<CourseScheduleDAO> ListCourses();
+        StudentDAO GetStudent(int studentId);
+        bool BookmarkCourse(int studentId, int courseScheduleId);
     }
 }

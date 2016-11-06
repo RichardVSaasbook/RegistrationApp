@@ -1,0 +1,7 @@
+﻿@model RegistrationWeb.Client.Models.StudentCourseViewModel
+
+<ul class="nav nav-tabs">
+    @Html.LinkItem(Model.StudentsListViewModel.CurrentAction, "Show", "/student/" + Model.StudentsListViewModel.CurrentStudentId, "Course Schedule")
+    @Html.LinkItem(Model.StudentsListViewModel.CurrentAction, "CourseBookmarks", "/student/" + Model.StudentsListViewModel.CurrentStudentId + "/bookmarks", "Bookmarked Courses")
+    @Html.LinkItem(Model.StudentsListViewModel.CurrentAction, "ShowCourses", "/student/" + Model.StudentsListViewModel.CurrentStudentId + "/add-course", "Add Course")
+</ul>

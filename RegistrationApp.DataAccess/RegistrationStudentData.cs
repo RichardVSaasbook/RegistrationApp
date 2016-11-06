@@ -53,15 +53,18 @@ namespace RegistrationApp.DataAccess
         /// </summary>
         /// <param name="student">The Student to list Courses from.</param>
         /// <returns>The List of Courses.</returns>
-        public List<CourseSchedule> ListStudentSchedule(Student student) {
-            List<CourseSchedule> courses = new List<CourseSchedule>();
+        public List<StudentSchedule> ListStudentSchedule(Student student) {
+            return student.StudentSchedules.Where(s => s.Enrolled).ToList();
+        }
 
-            foreach (StudentSchedule studentSchedule in student.StudentSchedules.Where(s => s.Enrolled))
-            {
-                courses.Add(studentSchedule.CourseSchedule);
-            }
-
-            return courses;
+        /// <summary>
+        /// Returns a list of all Courses the Student has bookmarked.
+        /// </summary>
+        /// <param name="student">The Student to list bookmarked Courses from.</param>
+        /// <returns>The List of bookmarked Courses.</returns>
+        public List<StudentSchedule> ListStudentBookmarks(Student student)
+        {
+            return student.StudentSchedules.Where(s => !s.Enrolled).ToList();
         }
 
         /// <summary>
@@ -124,12 +127,24 @@ namespace RegistrationApp.DataAccess
 
             if (CanRegisterForCourse(student, courseSchedule))
             {
-                db.StudentSchedules.Add(new StudentSchedule
+                StudentSchedule existingSchedule = db.StudentSchedules.Where(s => s.StudentId == student.PersonId && s.CourseScheduleId == courseSchedule.CourseScheduleId).FirstOrDefault();
+
+                if (existingSchedule == null)
                 {
-                    Student = student,
-                    CourseSchedule = courseSchedule,
-                    Enrolled = enrolled
-                });
+                    db.StudentSchedules.Add(new StudentSchedule
+                    {
+                        Student = student,
+                        CourseSchedule = courseSchedule,
+                        Enrolled = enrolled
+                    });
+                }
+                else
+                {
+                    existingSchedule.Enrolled = enrolled;
+                    var entry = db.Entry(existingSchedule);
+                    entry.State = EntityState.Modified;
+                }
+                
                 successful = db.SaveChanges() > 0;
             }
 

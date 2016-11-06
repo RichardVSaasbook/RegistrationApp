@@ -37,5 +37,11 @@ namespace RegistrationApp.DataClient.Models
         /// </summary>
         [DataMember]
         public short Capacity { get; set; }
+
+        /// <summary>
+        /// The number of Students enrolled.
+        /// </summary>
+        [DataMember]
+        public int Enrolled { get; set; }
     }
 }

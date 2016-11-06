@@ -138,5 +138,14 @@ namespace RegistrationApp.DataAccess
         {
             return db.CourseSchedules.Find(courseScheduleId);
         }
+
+        /// <summary>
+        /// List all of the CourseSchedules.
+        /// </summary>
+        /// <returns>The List of CourseSchedules.</returns>
+        public List<CourseSchedule> ListCourses()
+        {
+            return db.CourseSchedules.ToList();
+        }
     }
 }

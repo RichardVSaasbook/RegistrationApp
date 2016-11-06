@@ -10,10 +10,18 @@
         <tr>
             <td><h3>@Model.CourseSchedule.Course.Title</h3></td>
             <td style="vertical-align: bottom">
+                @using (Html.BeginRouteForm("AddStudentCourse", new { studentId = Model.Student.Person.Id, courseScheduleId = Model.CourseSchedule.Id }))
+                {
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <button type="submit" data-toggle="tooltip" title="Register Course" class="btn btn-success pull-right">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                }
+
                 @using (Html.BeginRouteForm("DropStudentCourse", new { studentId = Model.Student.Person.Id, courseScheduleId = Model.CourseSchedule.Id }))
                 {
                     @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                    <button type="submit" data-toggle="tooltip" title="Drop Course" class="btn btn-danger pull-right">
+                    <button type="submit" data-toggle="tooltip" title="Remove Bookmark" class="btn btn-danger pull-right">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 }

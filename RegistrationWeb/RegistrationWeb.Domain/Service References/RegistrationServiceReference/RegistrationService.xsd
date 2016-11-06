@@ -4,8 +4,8 @@
   <xs:element name="RegisterForCourse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q1:StudentDAO" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="courseScheduleDAO" nillable="true" type="q2:CourseScheduleDAO" />
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
+        <xs:element minOccurs="0" name="courseScheduleId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -19,8 +19,8 @@
   <xs:element name="HoldCourse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q3:StudentDAO" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="courseScheduleDAO" nillable="true" type="q4:CourseScheduleDAO" />
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
+        <xs:element minOccurs="0" name="courseScheduleId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -34,8 +34,8 @@
   <xs:element name="DropCourse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentDAO" nillable="true" type="q5:StudentDAO" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="studentScheduleDAO" nillable="true" type="q6:StudentScheduleDAO" />
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
+        <xs:element minOccurs="0" name="studentScheduleId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,7 +56,21 @@
   <xs:element name="ListStudentScheduleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentScheduleResult" nillable="true" type="q7:ArrayOfCourseScheduleDAO" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentScheduleResult" nillable="true" type="q1:ArrayOfStudentScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListStudentBookmarks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListStudentBookmarksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentBookmarksResult" nillable="true" type="q2:ArrayOfStudentScheduleDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -68,7 +82,33 @@
   <xs:element name="ListStudentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentsResult" nillable="true" type="q8:ArrayOfStudentDAO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentsResult" nillable="true" type="q3:ArrayOfStudentDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListCourses">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListCoursesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListCoursesResult" nillable="true" type="q4:ArrayOfCourseScheduleDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="studentId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="GetStudentResult" nillable="true" type="q5:StudentDAO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

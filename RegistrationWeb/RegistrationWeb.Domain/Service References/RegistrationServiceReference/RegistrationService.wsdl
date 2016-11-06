@@ -31,11 +31,29 @@
   <wsdl:message name="IRegistrationService_ListStudentSchedule_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListStudentScheduleResponse" />
   </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListStudentBookmarks_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListStudentBookmarks" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListStudentBookmarks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListStudentBookmarksResponse" />
+  </wsdl:message>
   <wsdl:message name="IRegistrationService_ListStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:ListStudents" />
   </wsdl:message>
   <wsdl:message name="IRegistrationService_ListStudents_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListCourses" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudent" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentResponse" />
   </wsdl:message>
   <wsdl:portType name="IRegistrationService">
     <wsdl:operation name="RegisterForCourse">
@@ -54,9 +72,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/ListStudentSchedule" message="tns:IRegistrationService_ListStudentSchedule_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse" message="tns:IRegistrationService_ListStudentSchedule_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ListStudentBookmarks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/ListStudentBookmarks" message="tns:IRegistrationService_ListStudentBookmarks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/ListStudentBookmarksResponse" message="tns:IRegistrationService_ListStudentBookmarks_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ListStudents">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/ListStudents" message="tns:IRegistrationService_ListStudents_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/ListStudentsResponse" message="tns:IRegistrationService_ListStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/ListCourses" message="tns:IRegistrationService_ListCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/ListCoursesResponse" message="tns:IRegistrationService_ListCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetStudent" message="tns:IRegistrationService_GetStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentResponse" message="tns:IRegistrationService_GetStudent_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRegistrationService" type="tns:IRegistrationService">
@@ -97,8 +127,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ListStudentBookmarks">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/ListStudentBookmarks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ListStudents">
       <soap:operation soapAction="http://tempuri.org/IRegistrationService/ListStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCourses">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/ListCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudent">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetStudent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

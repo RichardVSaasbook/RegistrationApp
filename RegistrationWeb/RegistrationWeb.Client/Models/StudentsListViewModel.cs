@@ -10,5 +10,7 @@ namespace RegistrationWeb.Client.Models
     {
         public IEnumerable<StudentDAO> Students { get; set; }
         public int CurrentStudentId { get; set; }
+        public MessageModel Message { get; set; }
+        public string CurrentAction { get; set; }
     }
 }

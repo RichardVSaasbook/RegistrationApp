@@ -17,7 +17,7 @@ namespace RegistrationWeb.Domain.Concrete
         /// </summary>
         /// <param name="student">The Student to get courses from.</param>
         /// <returns>The List of registered Courses.</returns>
-        public IEnumerable<CourseScheduleDAO> ListStudentSchedule(int studentId)
+        public IEnumerable<StudentScheduleDAO> ListStudentSchedule(int studentId)
         {
             return rsc.ListStudentSchedule(studentId);
         }
@@ -29,6 +29,46 @@ namespace RegistrationWeb.Domain.Concrete
         public IEnumerable<StudentDAO> ListStudents()
         {
             return rsc.ListStudents();
+        }
+
+        /// <summary>
+        /// Lists a Student's bookmarked Courses.
+        /// </summary>
+        /// <param name="studentId">The id of the Student.</param>
+        /// <returns>The List of Student bookmarks.</returns>
+        public IEnumerable<StudentScheduleDAO> ListStudentBookmarks(int studentId)
+        {
+            return rsc.ListStudentBookmarks(studentId);
+        }
+
+        /// <summary>
+        /// Lists all of the Courses available.
+        /// </summary>
+        /// <returns>The List of Courses.</returns>
+        public IEnumerable<CourseScheduleDAO> ListCourses()
+        {
+            return rsc.ListCourses();
+        }
+
+        /// <summary>
+        /// Get a Student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public StudentDAO GetStudent(int studentId)
+        {
+            return rsc.GetStudent(studentId);
+        }
+
+        /// <summary>
+        /// Bookmark a Course for a Student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="courseScheduleId"></param>
+        /// <returns></returns>
+        public bool BookmarkCourse(int studentId, int courseScheduleId)
+        {
+            return rsc.HoldCourse(studentId, courseScheduleId);
         }
     }
 }

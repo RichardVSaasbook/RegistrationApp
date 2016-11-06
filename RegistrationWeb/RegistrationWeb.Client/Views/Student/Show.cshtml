@@ -9,9 +9,11 @@
 }
 
 <div>
+    @Model.StudentsListViewModel.Message.ToHTML()
+
     <ul class="nav nav-tabs">
         <li class="active"><a href="/student/@Model.StudentsListViewModel.CurrentStudentId">Course Schedule</a></li>
-        <li><a href="/student/@Model.StudentsListViewModel.CurrentStudentId/bookmark">Bookmarked Courses</a></li>
+        <li><a href="/student/@Model.StudentsListViewModel.CurrentStudentId/bookmarks">Bookmarked Courses</a></li>
         <li><a href="/student/@Model.StudentsListViewModel.CurrentStudentId/add-course">Add Course</a></li>
     </ul>
 </div>

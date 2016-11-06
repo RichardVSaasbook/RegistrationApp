@@ -30,6 +30,36 @@ namespace RegistrationWeb.Client
                 "student/{studentId}",
                 new { controller = "Student", action = "Show" }
             );
+
+            routes.MapRoute(
+                null,
+                "student/{studentId}/add-course",
+                new { controller = "Student", action = "ShowCourses" }
+            );
+
+            routes.MapRoute(
+                null,
+                "student/{studentId}/bookmarks",
+                new { controller = "Student", action = "CourseBookmarks" }
+            );
+
+            routes.MapRoute(
+                "DropStudentCourse",
+                "student/{studentId}/drop/{courseScheduleId}",
+                new { controller = "Student", action = "DropCourse" }
+            );
+
+            routes.MapRoute(
+                "AddStudentCourse",
+                "student/{studentId}/add/{courseScheduleId}",
+                new { controller = "Student", action = "AddCourse" }
+            );
+
+            routes.MapRoute(
+                "BookmarkStudentCourse",
+                "student/{studentId}/bookmark/{courseScheduleId}",
+                new { controller = "Student", action = "BookmarkCourse" }
+            );
         }
     }
 }

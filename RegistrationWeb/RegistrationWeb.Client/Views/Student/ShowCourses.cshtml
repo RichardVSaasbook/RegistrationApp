@@ -1,0 +1,20 @@
+﻿@model RegistrationWeb.Client.Models.StudentCourseViewModel
+
+@{
+    ViewBag.Title = "Student " + Model.StudentsListViewModel.CurrentStudentId + " Course Bookmarks";
+}
+
+@section Sidebar {
+    @Html.StudentNav(Model.StudentsListViewModel)
+}
+
+<div>
+    @Model.StudentsListViewModel.Message.ToHTML()
+
+    @Html.Partial("StudentNav", Model)
+</div>
+
+@foreach (var cs in Model.CourseSchedules)
+{
+    @Html.Partial("Course", cs)
+}

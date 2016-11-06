@@ -36,5 +36,23 @@ namespace RegistrationWeb.Client.HtmlHelpers
 
             return MvcHtmlString.Create(builder.ToString());
         }
+
+        public static MvcHtmlString LinkItem(this HtmlHelper html, string currentAction, string expectedAction, string href, string text)
+        {
+            TagBuilder li = new TagBuilder("li");
+            
+            if (currentAction == expectedAction)
+            {
+                li.AddCssClass("active");
+            }
+
+            TagBuilder a = new TagBuilder("a");
+            a.MergeAttribute("href", href);
+            a.InnerHtml = text;
+
+            li.InnerHtml = a.ToString();
+
+            return MvcHtmlString.Create(li.ToString());
+        }
     }
 }
