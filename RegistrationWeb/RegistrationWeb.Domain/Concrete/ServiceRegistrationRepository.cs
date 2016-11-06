@@ -92,5 +92,60 @@ namespace RegistrationWeb.Domain.Concrete
         {
             return rsc.RegisterForCourse(studentId, courseScheduleId);
         }
+
+        public IEnumerable<CourseDAO> ListCourseInformation()
+        {
+            return rsc.ListCourseInformation();
+        }
+
+        public bool ScheduleCourse(CourseScheduleDAO courseSchedule)
+        {
+            return rsc.ScheduleCourse(courseSchedule);
+        }
+
+        public bool CancelCourse(int courseScheduleId)
+        {
+            return rsc.CancelCourse(courseScheduleId);
+        }
+
+        public bool ModifyCourse(CourseScheduleDAO courseSchedule)
+        {
+            return rsc.ModifyCourse(courseSchedule);
+        }
+
+        public IEnumerable<StudentDAO> ListEnrolledStudents(int courseId)
+        {
+            return rsc.ListEnrolledStudents(courseId);
+        }
+
+        public IEnumerable<ScheduleDAO> ListSchedules()
+        {
+            return rsc.ListSchedules();
+        }
+
+        public IEnumerable<PersonDAO> ListPeople()
+        {
+            return rsc.ListPeople();
+        }
+
+        public IEnumerable<CourseScheduleDAO> ListOpenCourses()
+        {
+            return rsc.ListOpenCourses();
+        }
+
+        public IEnumerable<CourseScheduleDAO> ListFullCourses()
+        {
+            return rsc.ListFullCourses();
+        }
+
+        public bool AddStudent(StudentDAO student)
+        {
+            return rsc.AddStudent(student);
+        }
+
+        public bool RemoveStudent(int studentId)
+        {
+            return rsc.RemoveStudent(studentId);
+        }
     }
 }

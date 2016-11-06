@@ -77,4 +77,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCourseScheduleDAO" nillable="true" type="tns:ArrayOfCourseScheduleDAO" />
+  <xs:complexType name="ArrayOfCourseDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseDAO" nillable="true" type="tns:CourseDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseDAO" nillable="true" type="tns:ArrayOfCourseDAO" />
+  <xs:complexType name="ArrayOfScheduleDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleDAO" nillable="true" type="tns:ScheduleDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleDAO" nillable="true" type="tns:ArrayOfScheduleDAO" />
+  <xs:complexType name="ArrayOfPersonDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonDAO" nillable="true" type="tns:PersonDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonDAO" nillable="true" type="tns:ArrayOfPersonDAO" />
 </xs:schema>

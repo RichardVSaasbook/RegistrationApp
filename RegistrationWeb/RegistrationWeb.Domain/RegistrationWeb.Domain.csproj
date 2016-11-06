@@ -94,7 +94,16 @@
     <None Include="Service References\RegistrationServiceReference\RegistrationService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.CourseDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.ScheduleDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO.datasource">

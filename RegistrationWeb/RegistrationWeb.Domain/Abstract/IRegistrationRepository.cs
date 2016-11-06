@@ -20,5 +20,16 @@ namespace RegistrationWeb.Domain.Abstract
         bool BookmarkCourse(int studentId, int courseScheduleId);
         bool DropCourse(int studentId, int courseScheduleId);
         bool RegisterForCourse(int studentId, int courseScheduleId);
+        IEnumerable<CourseDAO> ListCourseInformation();
+        bool ScheduleCourse(CourseScheduleDAO courseSchedule);
+        bool CancelCourse(int courseScheduleId);
+        bool ModifyCourse(CourseScheduleDAO courseSchedule);
+        IEnumerable<StudentDAO> ListEnrolledStudents(int courseId);
+        IEnumerable<ScheduleDAO> ListSchedules();
+        IEnumerable<PersonDAO> ListPeople();
+        IEnumerable<CourseScheduleDAO> ListOpenCourses();
+        IEnumerable<CourseScheduleDAO> ListFullCourses();
+        bool AddStudent(StudentDAO student);
+        bool RemoveStudent(int studentId);
     }
 }

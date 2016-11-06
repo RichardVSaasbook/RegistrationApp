@@ -126,6 +126,9 @@
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO.datasource" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO.datasource" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.StudentScheduleDAO.datasource" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.CourseDAO.datasource" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO.datasource" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.ScheduleDAO.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
