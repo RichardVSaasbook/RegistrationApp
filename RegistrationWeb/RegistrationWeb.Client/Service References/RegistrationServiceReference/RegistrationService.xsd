@@ -60,4 +60,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListStudents">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListStudentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListStudentsResult" nillable="true" type="q8:ArrayOfStudentDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

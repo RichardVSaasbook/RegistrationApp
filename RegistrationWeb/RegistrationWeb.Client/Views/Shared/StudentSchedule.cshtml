@@ -1,0 +1,37 @@
+﻿@model RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO
+
+<table class="table table-hover">
+    <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <td><h3>@Model.Course.Title</h3></td>
+            <td style="vertical-align: bottom">
+                <a href="/student/STUDENT-SCHEDULE-ID/drop-course" data-toggle="tooltip" title="Drop Course" class="btn btn-danger pull-right">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Professor</th>
+            <td>@Model.Professor.Name</td>
+        </tr>
+
+        <tr>
+            <th>Start Time</th>
+            <td>@Html.TimeFormat(Model.Schedule.StartTime)</td>
+        </tr>
+
+        <tr>
+            <th>End Time</th>
+            <td>@Html.TimeFormat(Model.Schedule.EndTime)</td>
+        </tr>
+    </tbody>
+</table>
+

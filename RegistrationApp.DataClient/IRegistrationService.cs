@@ -19,6 +19,9 @@ namespace RegistrationApp.DataClient
 
         [OperationContract]
         List<CourseScheduleDAO> ListStudentSchedule(int studentId);
+
+        [OperationContract]
+        List<StudentDAO> ListStudents();
         #endregion
     }
 }

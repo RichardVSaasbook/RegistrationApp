@@ -64,4 +64,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCourseScheduleDAO" nillable="true" type="tns:ArrayOfCourseScheduleDAO" />
+  <xs:complexType name="ArrayOfStudentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StudentDAO" nillable="true" type="tns:StudentDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStudentDAO" nillable="true" type="tns:ArrayOfStudentDAO" />
 </xs:schema>

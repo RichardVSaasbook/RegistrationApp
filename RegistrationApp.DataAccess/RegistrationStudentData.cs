@@ -65,6 +65,15 @@ namespace RegistrationApp.DataAccess
         }
 
         /// <summary>
+        /// Lists all of the Students in the database.
+        /// </summary>
+        /// <returns>The List of Students.</returns>
+        public List<Student> ListStudents()
+        {
+            return db.Students.ToList();
+        }
+
+        /// <summary>
         /// Determines whether or not a Student can register for a course.
         /// </summary>
         /// <param name="student">The Student to register to the Course.</param>

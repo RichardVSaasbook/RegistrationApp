@@ -97,6 +97,9 @@
     <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RegistrationServiceReference\RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

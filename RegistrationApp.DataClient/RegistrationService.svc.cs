@@ -47,6 +47,22 @@ namespace RegistrationApp.DataClient
         }
 
         /// <summary>
+        /// List all of the Students in the database.
+        /// </summary>
+        /// <returns>The List of StudentDAOs.</returns>
+        public List<StudentDAO> ListStudents()
+        {
+            List<StudentDAO> studentDAOs = new List<StudentDAO>();
+
+            foreach (Student student in data.ListStudents())
+            {
+                studentDAOs.Add(Mapper.MapToStudentDAO(student));
+            }
+
+            return studentDAOs;
+        }
+
+        /// <summary>
         /// List the Students enrolled CourseSchedules.
         /// </summary>
         /// <param name="studentDAO">The Student to grab a list of.</param>

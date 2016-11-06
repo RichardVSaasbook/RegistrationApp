@@ -21,5 +21,14 @@ namespace RegistrationWeb.Domain.Concrete
         {
             return rsc.ListStudentSchedule(studentId);
         }
+
+        /// <summary>
+        /// Lists all Students in the database.
+        /// </summary>
+        /// <returns>The List of StudentDAOs.</returns>
+        public IEnumerable<StudentDAO> ListStudents()
+        {
+            return rsc.ListStudents();
+        }
     }
 }

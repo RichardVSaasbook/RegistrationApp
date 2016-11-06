@@ -38,6 +38,12 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudentSchedule", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentScheduleResponse")]
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListStudents", ReplyAction="http://tempuri.org/IRegistrationService/ListStudentsResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +103,14 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
         
         public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListStudentScheduleAsync(int studentId) {
             return base.Channel.ListStudentScheduleAsync(studentId);
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[] ListStudents() {
+            return base.Channel.ListStudents();
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO[]> ListStudentsAsync() {
+            return base.Channel.ListStudentsAsync();
         }
     }
 }

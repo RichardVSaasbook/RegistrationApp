@@ -13,5 +13,6 @@ namespace RegistrationWeb.Domain.Abstract
     public interface IRegistrationRepository
     {
         IEnumerable<CourseScheduleDAO> ListStudentSchedule(int studentId);
+        IEnumerable<StudentDAO> ListStudents();
     }
 }

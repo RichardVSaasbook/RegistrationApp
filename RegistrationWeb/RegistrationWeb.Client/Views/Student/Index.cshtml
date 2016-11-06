@@ -1,39 +1,13 @@
-﻿@using RegistrationWeb.Domain.RegistrationServiceReference
-@model IEnumerable<CourseScheduleDAO>
+﻿@model RegistrationWeb.Client.Models.StudentsListViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students Index";
 }
 
-@foreach (CourseScheduleDAO s in Model)
-{
-    <table class="table table-hover">
-        <colgroup>
-            <col style="width: 50%" />
-            <col style="width: 50%" />
-        </colgroup>
-
-        <thead>
-            <tr>
-                <td colspan="2"><h3>@s.Course.Title</h3></td>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <th>Professor</th>
-                <td>@s.Professor.Name</td>
-            </tr>
-
-            <tr>
-                <th>Start Time</th>
-                <td>@Html.TimeFormat(s.Schedule.StartTime)</td>
-            </tr>
-
-            <tr>
-                <th>End Time</th>
-                <td>@Html.TimeFormat(s.Schedule.EndTime)</td>
-            </tr>
-        </tbody>
-    </table>
+@section Sidebar {
+    @Html.StudentNav(Model)    
 }
+
+<p>
+    &larr; Click on a student.
+</p>

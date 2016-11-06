@@ -1,4 +1,5 @@
-﻿using RegistrationWeb.Domain.Abstract;
+﻿using RegistrationWeb.Client.Models;
+using RegistrationWeb.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,34 @@ namespace RegistrationWeb.Client.Controllers
             this.repository = repository;
         }
 
-        public ViewResult Index(int studentId = 1)
+        /// <summary>
+        /// View the Student index.
+        /// </summary>
+        /// <returns>The View for the Student Index.</returns>
+        public ViewResult Index()
         {
-            return View(repository.ListStudentSchedule(studentId));
+            return View(new StudentsListViewModel
+            {
+                CurrentStudentId = 0,
+                Students = repository.ListStudents()
+            });
+        }
+
+        /// <summary>
+        /// Show the CourseSchedule for the Student and display some links for functionality.
+        /// </summary>
+        /// <param name="studentId">The Id of the Student to show.</param>
+        /// <returns>The View for the Student Show.</returns>
+        public ViewResult Show(int studentId)
+        {
+            return View(new StudentCourseViewModel {
+                StudentsListViewModel = new StudentsListViewModel
+                {
+                    CurrentStudentId = studentId,
+                    Students = repository.ListStudents()
+                },
+                CourseSchedules = repository.ListStudentSchedule(studentId)
+            });
         }
     }
 }
