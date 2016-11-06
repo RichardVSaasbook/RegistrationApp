@@ -12,7 +12,8 @@
             <td style="vertical-align: bottom">
                 @using (Html.BeginRouteForm("DropStudentCourse", new { studentId = Model.Student.Person.Id, courseScheduleId = Model.CourseSchedule.Id }))
                 {
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    @Html.Hidden("redirectSuccess", "Show")
+                    @Html.Hidden("redirectFailure", "Show")
                     <button type="submit" data-toggle="tooltip" title="Drop Course" class="btn btn-danger pull-right">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>

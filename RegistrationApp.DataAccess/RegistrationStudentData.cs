@@ -99,7 +99,7 @@ namespace RegistrationApp.DataAccess
             }
             else
             {
-                foreach (StudentSchedule existingSchedule in student.StudentSchedules)
+                foreach (StudentSchedule existingSchedule in student.StudentSchedules.Where(s => s.Enrolled))
                 {
                     TimeSpan oldStartTime = existingSchedule.CourseSchedule.Schedule.StartTime;
                     TimeSpan oldEndTime = ScheduleTime.GetEndTime(oldStartTime, existingSchedule.CourseSchedule.Schedule.TimeBlocks);
@@ -123,9 +123,9 @@ namespace RegistrationApp.DataAccess
         /// <returns></returns>
         private bool CreateStudentSchedule(Student student, CourseSchedule courseSchedule, bool enrolled)
         {
-            bool successful = true;
+            bool successful = CanRegisterForCourse(student, courseSchedule);
 
-            if (CanRegisterForCourse(student, courseSchedule))
+            if (successful)
             {
                 StudentSchedule existingSchedule = db.StudentSchedules.Where(s => s.StudentId == student.PersonId && s.CourseScheduleId == courseSchedule.CourseScheduleId).FirstOrDefault();
 

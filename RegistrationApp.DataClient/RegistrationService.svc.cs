@@ -33,7 +33,7 @@ namespace RegistrationApp.DataClient
         public bool DropCourse(int studentId, int courseScheduleId)
         {
             RegistrationData data = new RegistrationData();
-            return data.DropCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateStudentSchedule(courseScheduleId, studentId));
+            return data.DropCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateStudentSchedule(studentId, courseScheduleId));
         }
 
         /// <summary>

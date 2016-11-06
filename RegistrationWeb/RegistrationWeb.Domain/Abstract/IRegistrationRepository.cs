@@ -18,5 +18,7 @@ namespace RegistrationWeb.Domain.Abstract
         IEnumerable<CourseScheduleDAO> ListCourses();
         StudentDAO GetStudent(int studentId);
         bool BookmarkCourse(int studentId, int courseScheduleId);
+        bool DropCourse(int studentId, int courseScheduleId);
+        bool RegisterForCourse(int studentId, int courseScheduleId);
     }
 }

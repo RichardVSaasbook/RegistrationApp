@@ -18,7 +18,17 @@
     </ul>
 </div>
 
-@foreach (var cs in Model.CourseSchedules)
+@if (Model.CourseSchedules.Count() > 0)
 {
-    @Html.Partial("StudentSchedule", cs)
+    foreach (var cs in Model.CourseSchedules)
+    {
+        @Html.Partial("StudentSchedule", cs)
+    }
+}
+else
+{
+    <br />
+    <div class="alert alert-warning">
+        No courses to display.
+    </div>
 }

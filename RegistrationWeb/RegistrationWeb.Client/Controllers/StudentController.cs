@@ -117,10 +117,18 @@ namespace RegistrationWeb.Client.Controllers
         /// <param name="scheduleId"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
-        public RedirectToRouteResult DropCourse(int studentId, int courseScheduleId, string returnUrl)
+        public RedirectToRouteResult DropCourse(int studentId, int courseScheduleId, string redirectSuccess, string redirectFailure)
         {
-            TempData["message"] = new MessageModel { Text = "Succesfully dropped course.", Type = "success" };
-            return RedirectToAction("Show", new { studentId });
+            if (repository.DropCourse(studentId, courseScheduleId))
+            {
+                TempData["message"] = new MessageModel { Text = "Succesfully dropped course!", Type = "success" };
+                return RedirectToAction(redirectSuccess, new { studentId });
+            }
+            else
+            {
+                TempData["message"] = new MessageModel { Text = "Could not drop the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { studentId });
+            }
         }
 
         /// <summary>
@@ -130,18 +138,39 @@ namespace RegistrationWeb.Client.Controllers
         /// <param name="courseScheduleId"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
-        public RedirectToRouteResult BookmarkCourse(int studentId, int courseScheduleId, string returnUrl)
+        public RedirectToRouteResult BookmarkCourse(int studentId, int courseScheduleId, string redirectSuccess, string redirectFailure)
         {
-
             if (repository.BookmarkCourse(studentId, courseScheduleId))
             {
                 TempData["message"] = new MessageModel { Text = "Succesfully bookmarked the course!", Type = "success" };
-                return RedirectToAction("CourseBookmarks", new { studentId });
+                return RedirectToAction(redirectSuccess, new { studentId });
             }
             else
             {
-                TempData["message"] = new MessageModel { Text = "Could not bookmark the Course.", Type = "danger" };
-                return RedirectToAction("ShowCourses", new { studentId });
+                TempData["message"] = new MessageModel { Text = "Could not bookmark the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { studentId });
+            }
+        }
+
+        /// <summary>
+        /// Register a Course for a Student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="courseScheduleId"></param>
+        /// <param name="redirectSuccess"></param>
+        /// <param name="redirectFailure"></param>
+        /// <returns></returns>
+        public RedirectToRouteResult AddCourse(int studentId, int courseScheduleId, string redirectSuccess, string redirectFailure)
+        {
+            if (repository.RegisterForCourse(studentId, courseScheduleId))
+            {
+                TempData["message"] = new MessageModel { Text = "Succesfully registered the course!", Type = "success" };
+                return RedirectToAction(redirectSuccess, new { studentId });
+            }
+            else
+            {
+                TempData["message"] = new MessageModel { Text = "Could not register the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { studentId });
             }
         }
 

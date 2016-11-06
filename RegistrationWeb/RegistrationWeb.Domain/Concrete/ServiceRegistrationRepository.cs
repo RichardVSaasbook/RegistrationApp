@@ -70,5 +70,27 @@ namespace RegistrationWeb.Domain.Concrete
         {
             return rsc.HoldCourse(studentId, courseScheduleId);
         }
+
+        /// <summary>
+        /// Drop a Student's Course.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="courseScheduleId"></param>
+        /// <returns></returns>
+        public bool DropCourse(int studentId, int courseScheduleId)
+        {
+            return rsc.DropCourse(studentId, courseScheduleId);
+        }
+
+        /// <summary>
+        /// Register the Course for the Student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="courseScheduleId"></param>
+        /// <returns></returns>
+        public bool RegisterForCourse(int studentId, int courseScheduleId)
+        {
+            return rsc.RegisterForCourse(studentId, courseScheduleId);
+        }
     }
 }

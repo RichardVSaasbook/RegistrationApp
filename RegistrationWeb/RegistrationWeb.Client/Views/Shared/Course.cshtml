@@ -12,7 +12,8 @@
             <td style="vertical-align: bottom">
                 @using (Html.BeginRouteForm("BookmarkStudentCourse", new { studentId = Model.Student.Person.Id, courseScheduleId = Model.CourseSchedule.Id }))
                 {
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    @Html.Hidden("redirectSuccess", "CourseBookmarks")
+                    @Html.Hidden("redirectFailure", "ShowCourses")
                     <button type="submit" data-toggle="tooltip" title="Add Bookmark" class="btn btn-primary pull-right">
                         <span class="glyphicon glyphicon-star"></span>
                     </button>
@@ -20,7 +21,8 @@
 
                 @using (Html.BeginRouteForm("AddStudentCourse", new { studentId = Model.Student.Person.Id, courseScheduleId = Model.CourseSchedule.Id }))
                 {
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    @Html.Hidden("redirectSuccess", "Show")
+                    @Html.Hidden("redirectFailure", "ShowCourses")
                     <button type="submit" data-toggle="tooltip" title="Register Course" class="btn btn-success pull-right">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>

@@ -88,9 +88,9 @@ namespace RegistrationApp.DataAccess
         /// </summary>
         /// <param name="studentScheduleId">The Id of the StudentSchedule to find.</param>
         /// <returns>The new or found StudentSchedule.</returns>
-        public StudentSchedule FindOrCreateStudentSchedule(int courseScheduleId, int studentId)
+        public StudentSchedule FindOrCreateStudentSchedule(int studentId, int courseScheduleId)
         {
-            return FindOrCreate(db.StudentSchedules, courseScheduleId, studentId);
+            return FindOrCreate(db.StudentSchedules, studentId, courseScheduleId);
         }
 
         /// <summary>
