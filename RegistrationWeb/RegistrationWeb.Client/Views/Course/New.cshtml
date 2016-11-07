@@ -1,7 +1,7 @@
 ﻿@model RegistrationWeb.Client.Models.CourseCourseViewModel
 
 @{
-    ViewBag.Title = "Modify Course " + Model.CourseListViewModel.CurrentCourseId;
+    ViewBag.Title = "New Course Schehdule";
 }
 
 @section Sidebar {
@@ -9,14 +9,21 @@
 }
 
 <div>
+    @Html.Partial("CourseNav", Model.CourseListViewModel)
+
     @Model.CourseListViewModel.Message.ToHTML()
 </div>
 
 
-@using (Html.BeginRouteForm("ModifyCourse", new { courseId = Model.CourseListViewModel.CurrentCourseId, courseScheduleId = Model.CourseScheduleId }))
+@using (Html.BeginRouteForm("RegisterCourse", new { courseId = Model.CourseListViewModel.CurrentCourseId, courseScheduleId = Model.CourseScheduleId }))
 {
     @Html.Hidden("redirectSuccess", "Show")
-    @Html.Hidden("redirectFailure", "Edit")
+    @Html.Hidden("redirectFailure", "New")
+
+    <div class="form-group">
+        <label for="professor">Professor</label><br />
+        @Html.DropDownList("professor", Model.PeopleList, new Dictionary<string, string> { { "class", "form-control" } })
+    </div>
 
     <div class="form-group">
         <label for="schedule">Schedule</label><br />
@@ -25,8 +32,9 @@
 
     <div class="form-group">
         <label for="capacity">Capacity</label><br />
-        @Html.TextBox("capacity", Model.Capacity, new Dictionary<string, string> { { "class", "form-control" } })
+        <input id="capacity" name="capacity" type="text" value="@Model.Capacity" class="form-control" />
     </div>
 
     <input type="submit" value="Save Changes" class="btn btn-primary" />
 }
+

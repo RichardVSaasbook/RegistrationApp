@@ -643,10 +643,10 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseDAO[]> ListCourseInformationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ScheduleCourse", ReplyAction="http://tempuri.org/IRegistrationService/ScheduleCourseResponse")]
-        bool ScheduleCourse(RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseSchedule);
+        bool ScheduleCourse(int courseId, int professorId, int scheduleId, short capacity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ScheduleCourse", ReplyAction="http://tempuri.org/IRegistrationService/ScheduleCourseResponse")]
-        System.Threading.Tasks.Task<bool> ScheduleCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseSchedule);
+        System.Threading.Tasks.Task<bool> ScheduleCourseAsync(int courseId, int professorId, int scheduleId, short capacity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/CancelCourse", ReplyAction="http://tempuri.org/IRegistrationService/CancelCourseResponse")]
         bool CancelCourse(int courseScheduleId);
@@ -691,10 +691,10 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO[]> ListFullCoursesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/AddStudent", ReplyAction="http://tempuri.org/IRegistrationService/AddStudentResponse")]
-        bool AddStudent(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO student);
+        bool AddStudent(string name, int majorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/AddStudent", ReplyAction="http://tempuri.org/IRegistrationService/AddStudentResponse")]
-        System.Threading.Tasks.Task<bool> AddStudentAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO student);
+        System.Threading.Tasks.Task<bool> AddStudentAsync(string name, int majorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/RemoveStudent", ReplyAction="http://tempuri.org/IRegistrationService/RemoveStudentResponse")]
         bool RemoveStudent(int studentId);
@@ -820,12 +820,12 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
             return base.Channel.ListCourseInformationAsync();
         }
         
-        public bool ScheduleCourse(RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseSchedule) {
-            return base.Channel.ScheduleCourse(courseSchedule);
+        public bool ScheduleCourse(int courseId, int professorId, int scheduleId, short capacity) {
+            return base.Channel.ScheduleCourse(courseId, professorId, scheduleId, capacity);
         }
         
-        public System.Threading.Tasks.Task<bool> ScheduleCourseAsync(RegistrationWeb.Domain.RegistrationServiceReference.CourseScheduleDAO courseSchedule) {
-            return base.Channel.ScheduleCourseAsync(courseSchedule);
+        public System.Threading.Tasks.Task<bool> ScheduleCourseAsync(int courseId, int professorId, int scheduleId, short capacity) {
+            return base.Channel.ScheduleCourseAsync(courseId, professorId, scheduleId, capacity);
         }
         
         public bool CancelCourse(int courseScheduleId) {
@@ -884,12 +884,12 @@ namespace RegistrationWeb.Domain.RegistrationServiceReference {
             return base.Channel.ListFullCoursesAsync();
         }
         
-        public bool AddStudent(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO student) {
-            return base.Channel.AddStudent(student);
+        public bool AddStudent(string name, int majorId) {
+            return base.Channel.AddStudent(name, majorId);
         }
         
-        public System.Threading.Tasks.Task<bool> AddStudentAsync(RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO student) {
-            return base.Channel.AddStudentAsync(student);
+        public System.Threading.Tasks.Task<bool> AddStudentAsync(string name, int majorId) {
+            return base.Channel.AddStudentAsync(name, majorId);
         }
         
         public bool RemoveStudent(int studentId) {

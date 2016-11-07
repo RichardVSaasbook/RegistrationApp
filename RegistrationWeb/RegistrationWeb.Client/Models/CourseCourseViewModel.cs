@@ -12,6 +12,7 @@ namespace RegistrationWeb.Client.Models
         public CourseListViewModel CourseListViewModel { get; set; }
         public IEnumerable<CourseScheduleDAO> CourseSchedules { get; set; }
         public SelectList SchedulesList { get; set; }
+        public SelectList PeopleList { get; set; }
         public string Capacity { get; set; }
         public int CourseScheduleId { get; set; }
     }

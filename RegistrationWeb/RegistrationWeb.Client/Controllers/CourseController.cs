@@ -46,18 +46,7 @@ namespace RegistrationWeb.Client.Controllers
 
         public ViewResult Edit(int courseId, int courseScheduleId)
         {
-            List<SelectListItem> scheduleList = new List<SelectListItem>();
             CourseScheduleDAO courseSchedule = repository.GetCourseSchedule(courseScheduleId);
-
-            foreach (ScheduleDAO schedule in repository.ListSchedules())
-            {
-                scheduleList.Add(new SelectListItem
-                {
-                    Value = schedule.Id.ToString(),
-                    Text = FormatTime(schedule.StartTime) + " - " + FormatTime(schedule.EndTime),
-                    Selected = courseSchedule.Schedule.Id == schedule.Id
-                });
-            }
 
             return View(new CourseCourseViewModel
             {
@@ -69,7 +58,7 @@ namespace RegistrationWeb.Client.Controllers
                     CurrentAction = "Edit"
                 },
                 CourseSchedules = repository.ListCourseSchedules(courseId),
-                SchedulesList = new SelectList(scheduleList, "Value", "Text"),
+                SchedulesList = new SelectList(GetScheduleList(courseScheduleId), "Value", "Text"),
                 Capacity = courseSchedule.Capacity.ToString(),
                 CourseScheduleId = courseScheduleId
             });
@@ -86,6 +75,49 @@ namespace RegistrationWeb.Client.Controllers
             {
                 TempData["message"] = new MessageModel { Text = "Could not modify the course.", Type = "danger" };
                 return RedirectToAction(redirectFailure, new { courseId, courseScheduleId });
+            }
+        }
+
+        public ViewResult New(int courseId)
+        {
+            List<SelectListItem> peopleList = new List<SelectListItem>();
+
+            foreach (PersonDAO person in repository.ListPeople())
+            {
+                peopleList.Add(new SelectListItem
+                {
+                    Value = person.Id.ToString(),
+                    Text = person.Name
+                });
+            }
+
+            return View(new CourseCourseViewModel
+            {
+                CourseListViewModel = new CourseListViewModel
+                {
+                    CurrentCourseId = courseId,
+                    Courses = repository.ListCourseInformation(),
+                    Message = GetMessage(),
+                    CurrentAction = "New"
+                },
+                SchedulesList = new SelectList(GetScheduleList(0), "Value", "Text"),
+                PeopleList = new SelectList(peopleList, "Value", "Text"),
+                Capacity = "0",
+                CourseScheduleId = 0
+            });
+        }
+
+        public RedirectToRouteResult Create(int courseId, string professor, string schedule, string capacity, string redirectSuccess, string redirectFailure)
+        {
+            if (repository.ScheduleCourse(courseId, int.Parse(professor), int.Parse(schedule), short.Parse(capacity)))
+            {
+                TempData["message"] = new MessageModel { Text = "Succesfully scheduled course!", Type = "success" };
+                return RedirectToAction(redirectSuccess, new { courseId });
+            }
+            else
+            {
+                TempData["message"] = new MessageModel { Text = "Could not schedule the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { courseId });
             }
         }
 
@@ -118,6 +150,29 @@ namespace RegistrationWeb.Client.Controllers
         {
             DateTime dateTime = DateTime.Today.Add(time);
             return dateTime.ToString("hh:mm tt");
+        }
+
+        private List<SelectListItem> GetScheduleList(int courseScheduleId)
+        {
+            List<SelectListItem> scheduleList = new List<SelectListItem>();
+            CourseScheduleDAO courseSchedule = new CourseScheduleDAO { Schedule = new ScheduleDAO { Id = 0 } };
+
+            if (courseScheduleId > 0)
+            {
+                courseSchedule = repository.GetCourseSchedule(courseScheduleId);
+            }
+
+            foreach (ScheduleDAO schedule in repository.ListSchedules())
+            {
+                scheduleList.Add(new SelectListItem
+                {
+                    Value = schedule.Id.ToString(),
+                    Text = FormatTime(schedule.StartTime) + " - " + FormatTime(schedule.EndTime),
+                    Selected = courseSchedule.Schedule.Id == schedule.Id
+                });
+            }
+
+            return scheduleList;
         }
     }
 }

@@ -98,9 +98,9 @@ namespace RegistrationWeb.Domain.Concrete
             return rsc.ListCourseInformation();
         }
 
-        public bool ScheduleCourse(CourseScheduleDAO courseSchedule)
+        public bool ScheduleCourse(int courseId, int professorId, int scheduleId, short capacity)
         {
-            return rsc.ScheduleCourse(courseSchedule);
+            return rsc.ScheduleCourse(courseId, professorId, scheduleId, capacity);
         }
 
         public bool CancelCourse(int courseScheduleId)
@@ -138,9 +138,9 @@ namespace RegistrationWeb.Domain.Concrete
             return rsc.ListFullCourses();
         }
 
-        public bool AddStudent(StudentDAO student)
+        public bool AddStudent(string name, int majorId)
         {
-            return rsc.AddStudent(student);
+            return rsc.AddStudent(name, majorId);
         }
 
         public bool RemoveStudent(int studentId)

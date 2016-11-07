@@ -9,6 +9,8 @@
 }
 
 <div>
+    @Html.Partial("CourseNav", Model.CourseListViewModel)
+
     @Model.CourseListViewModel.Message.ToHTML()
 </div>
 

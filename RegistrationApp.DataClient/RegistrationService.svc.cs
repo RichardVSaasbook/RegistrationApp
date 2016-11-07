@@ -24,9 +24,16 @@ namespace RegistrationApp.DataClient
             data = new RegistrationData();
         }
 
-        public bool AddStudent(StudentDAO student)
+        public bool AddStudent(string name, int majorId)
         {
-            return data.AddStudent(Mapper.MapToStudent(student));
+            return data.AddStudent(new Student
+            {
+                Department = data.FindOrCreateDepartment(majorId),
+                Person = new Person
+                {
+                    Name = name
+                }
+            });
         }
 
         public bool CancelCourse(int courseScheduleId)
@@ -249,12 +256,12 @@ namespace RegistrationApp.DataClient
             return data.RemoveStudent(data.FindOrCreateStudent(studentId));
         }
 
-        public bool ScheduleCourse(CourseScheduleDAO courseScheduleDAO)
+        public bool ScheduleCourse(int courseId, int professorId, int scheduleId, short capacity)
         {
-            Course course = Mapper.MapToCourse(courseScheduleDAO.Course);
-            Schedule schedule = Mapper.MapToSchedule(courseScheduleDAO.Schedule);
-            Person professor = Mapper.MapToPerson(courseScheduleDAO.Professor);
-            return data.ScheduleCourse(course, schedule, professor, courseScheduleDAO.Capacity);
+            Course course = data.FindOrCreateCourse(courseId);
+            Schedule schedule = data.FindOrCreateSchedule(scheduleId);
+            Person professor = data.FindOrCreatePerson(professorId);
+            return data.ScheduleCourse(course, schedule, professor, capacity);
         }
     }
 }

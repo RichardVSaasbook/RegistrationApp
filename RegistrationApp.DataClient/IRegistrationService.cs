@@ -36,7 +36,7 @@ namespace RegistrationApp.DataClient
         List<CourseDAO> ListCourseInformation();
 
         [OperationContract]
-        bool ScheduleCourse(CourseScheduleDAO courseSchedule);
+        bool ScheduleCourse(int courseId, int professorId, int scheduleId, short capacity);
 
         [OperationContract]
         bool CancelCourse(int courseScheduleId);
@@ -60,7 +60,7 @@ namespace RegistrationApp.DataClient
         List<CourseScheduleDAO> ListFullCourses();
 
         [OperationContract]
-        bool AddStudent(StudentDAO student);
+        bool AddStudent(string name, int majorId);
 
         [OperationContract]
         bool RemoveStudent(int studentId);

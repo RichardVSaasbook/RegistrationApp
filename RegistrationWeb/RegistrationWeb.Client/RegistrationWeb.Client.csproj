@@ -203,6 +203,7 @@
     <Content Include="Views\Shared\CourseNav.cshtml" />
     <Content Include="Views\Course\Show.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\New.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
