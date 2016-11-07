@@ -1,5 +1,6 @@
 ﻿using RegistrationWeb.Client.Models;
 using RegistrationWeb.Domain.Abstract;
+using RegistrationWeb.Domain.RegistrationServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,70 @@ namespace RegistrationWeb.Client.Controllers
             return View(new CourseListViewModel
             {
                 CurrentCourseId = 0,
-                CourseSchedules = repository.ListCourses().OrderBy(c => c.Schedule.StartTime).ThenBy(c => c.Schedule.EndTime),
+                Courses = repository.ListCourseInformation(),
                 Message = GetMessage(),
                 CurrentAction = "Index"
             });
+        }
+
+        public ViewResult Show(int courseId)
+        {
+            return View(new CourseCourseViewModel
+            {
+                CourseListViewModel = new CourseListViewModel
+                {
+                    CurrentCourseId = courseId,
+                    Courses = repository.ListCourseInformation(),
+                    Message = GetMessage(),
+                    CurrentAction = "Show"
+                },
+                CourseSchedules = repository.ListCourseSchedules(courseId)
+            });
+        }
+
+        public ViewResult Edit(int courseId, int courseScheduleId)
+        {
+            List<SelectListItem> scheduleList = new List<SelectListItem>();
+            CourseScheduleDAO courseSchedule = repository.GetCourseSchedule(courseScheduleId);
+
+            foreach (ScheduleDAO schedule in repository.ListSchedules())
+            {
+                scheduleList.Add(new SelectListItem
+                {
+                    Value = schedule.Id.ToString(),
+                    Text = FormatTime(schedule.StartTime) + " - " + FormatTime(schedule.EndTime),
+                    Selected = courseSchedule.Schedule.Id == schedule.Id
+                });
+            }
+
+            return View(new CourseCourseViewModel
+            {
+                CourseListViewModel = new CourseListViewModel
+                {
+                    CurrentCourseId = courseId,
+                    Courses = repository.ListCourseInformation(),
+                    Message = GetMessage(),
+                    CurrentAction = "Edit"
+                },
+                CourseSchedules = repository.ListCourseSchedules(courseId),
+                SchedulesList = new SelectList(scheduleList, "Value", "Text"),
+                Capacity = courseSchedule.Capacity.ToString(),
+                CourseScheduleId = courseScheduleId
+            });
+        }
+
+        public RedirectToRouteResult Update(int courseId, int courseScheduleId, string schedule, string capacity, string redirectSuccess, string redirectFailure)
+        {
+            if (repository.ModifyCourse(courseScheduleId, int.Parse(schedule), short.Parse(capacity)))
+            {
+                TempData["message"] = new MessageModel { Text = "Succesfully modified course!", Type = "success" };
+                return RedirectToAction(redirectSuccess, new { courseId });
+            }
+            else
+            {
+                TempData["message"] = new MessageModel { Text = "Could not modify the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { courseId, courseScheduleId });
+            }
         }
 
         /// <summary>
@@ -51,6 +112,12 @@ namespace RegistrationWeb.Client.Controllers
             }
 
             return message;
+        }
+
+        private string FormatTime(TimeSpan time)
+        {
+            DateTime dateTime = DateTime.Today.Add(time);
+            return dateTime.ToString("hh:mm tt");
         }
     }
 }

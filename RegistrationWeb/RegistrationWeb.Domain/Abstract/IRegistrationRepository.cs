@@ -23,7 +23,7 @@ namespace RegistrationWeb.Domain.Abstract
         IEnumerable<CourseDAO> ListCourseInformation();
         bool ScheduleCourse(CourseScheduleDAO courseSchedule);
         bool CancelCourse(int courseScheduleId);
-        bool ModifyCourse(CourseScheduleDAO courseSchedule);
+        bool ModifyCourse(int courseScheduleId, int scheduleId, short capacity);
         IEnumerable<StudentDAO> ListEnrolledStudents(int courseId);
         IEnumerable<ScheduleDAO> ListSchedules();
         IEnumerable<PersonDAO> ListPeople();
@@ -31,5 +31,8 @@ namespace RegistrationWeb.Domain.Abstract
         IEnumerable<CourseScheduleDAO> ListFullCourses();
         bool AddStudent(StudentDAO student);
         bool RemoveStudent(int studentId);
+        IEnumerable<CourseScheduleDAO> ListCourseSchedules(int courseId);
+        CourseScheduleDAO GetCourseSchedule(int courseScheduleId);
+        ScheduleDAO GetSchedule(int scheduleId);
     }
 }

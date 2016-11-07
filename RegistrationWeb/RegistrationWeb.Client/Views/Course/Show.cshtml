@@ -1,0 +1,28 @@
+﻿@model RegistrationWeb.Client.Models.CourseCourseViewModel
+
+@{
+    ViewBag.Title = "Course " + Model.CourseListViewModel.CurrentCourseId + " Schedules";
+}
+
+@section Sidebar {
+    @Html.CourseNav(Model.CourseListViewModel)
+}
+
+<div>
+    @Model.CourseListViewModel.Message.ToHTML()
+</div>
+
+@if (Model.CourseSchedules.Count() > 0)
+{
+    foreach (var cs in Model.CourseSchedules)
+    {
+        @Html.Partial("CourseInfo", cs)
+    }
+}
+else
+{
+    <br />
+    <div class="alert alert-warning">
+        No courses to display.
+    </div>
+}

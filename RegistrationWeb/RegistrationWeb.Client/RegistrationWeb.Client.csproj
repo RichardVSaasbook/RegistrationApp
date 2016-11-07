@@ -161,6 +161,7 @@
     <Compile Include="HtmlHelpers\NavHelpers.cs" />
     <Compile Include="HtmlHelpers\TimeHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\CourseCourseViewModel.cs" />
     <Compile Include="Models\CourseListViewModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\NullMessageModel.cs" />
@@ -200,6 +201,8 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Shared\CourseInfo.cshtml" />
     <Content Include="Views\Shared\CourseNav.cshtml" />
+    <Content Include="Views\Course\Show.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

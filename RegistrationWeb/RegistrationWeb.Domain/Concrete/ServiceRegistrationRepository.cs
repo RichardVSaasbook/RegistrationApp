@@ -108,9 +108,9 @@ namespace RegistrationWeb.Domain.Concrete
             return rsc.CancelCourse(courseScheduleId);
         }
 
-        public bool ModifyCourse(CourseScheduleDAO courseSchedule)
+        public bool ModifyCourse(int courseScheduleId, int scheduleId, short capacity)
         {
-            return rsc.ModifyCourse(courseSchedule);
+            return rsc.ModifyCourse(courseScheduleId, scheduleId, capacity);
         }
 
         public IEnumerable<StudentDAO> ListEnrolledStudents(int courseId)
@@ -146,6 +146,21 @@ namespace RegistrationWeb.Domain.Concrete
         public bool RemoveStudent(int studentId)
         {
             return rsc.RemoveStudent(studentId);
+        }
+
+        public IEnumerable<CourseScheduleDAO> ListCourseSchedules(int courseId)
+        {
+            return rsc.ListCourseSchedule(courseId);
+        }
+
+        public CourseScheduleDAO GetCourseSchedule(int courseScheduleId)
+        {
+            return rsc.GetCourseSchedule(courseScheduleId);
+        }
+
+        public ScheduleDAO GetSchedule(int scheduleId)
+        {
+            return rsc.GetSchedule(scheduleId);
         }
     }
 }

@@ -45,6 +45,16 @@ namespace RegistrationApp.DataClient
             return data.DropCourse(data.FindOrCreateStudent(studentId), data.FindOrCreateStudentSchedule(studentId, courseScheduleId));
         }
 
+        public CourseScheduleDAO GetCourseSchedule(int courseScheduleId)
+        {
+            return Mapper.MapToCourseScheduleDAO(data.FindOrCreateCourseSchedule(courseScheduleId));
+        }
+
+        public ScheduleDAO GetSchedule(int scheduleId)
+        {
+            return Mapper.MapToScheduleDAO(data.FindOrCreateSchedule(scheduleId));
+        }
+
         /// <summary>
         /// Get the Student.
         /// </summary>
@@ -92,6 +102,18 @@ namespace RegistrationApp.DataClient
             }
 
             return courseScheduleDAOs;
+        }
+
+        public List<CourseScheduleDAO> ListCourseSchedule(int courseId)
+        {
+            List<CourseScheduleDAO> courseSchedules = new List<CourseScheduleDAO>();
+
+            foreach (CourseSchedule courseSchedule in data.ListCourses().Where(c => c.CourseId == courseId))
+            {
+                courseSchedules.Add(Mapper.MapToCourseScheduleDAO(courseSchedule));
+            }
+
+            return courseSchedules;
         }
 
         public List<StudentDAO> ListEnrolledStudents(int courseId)
@@ -206,10 +228,9 @@ namespace RegistrationApp.DataClient
             return studentScheduleDAOs;
         }
 
-        public bool ModifyCourse(CourseScheduleDAO courseScheduleDAO)
+        public bool ModifyCourse(int courseScheduleId, int scheduleId, short capacity)
         {
-            CourseSchedule courseSchedule = data.FindOrCreateCourseSchedule(courseScheduleDAO.Id);
-            return data.ModifyCourse(courseSchedule, Mapper.MapToSchedule(courseScheduleDAO.Schedule), courseScheduleDAO.Capacity);
+            return data.ModifyCourse(data.FindOrCreateCourseSchedule(courseScheduleId), data.FindOrCreateSchedule(scheduleId), capacity);
         }
 
         /// <summary>

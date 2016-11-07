@@ -1,0 +1,33 @@
+﻿@using RegistrationWeb.Domain.RegistrationServiceReference
+@model RegistrationWeb.Client.Models.CourseCourseViewModel
+
+@{
+    ViewBag.Title = "Modify Course " + Model.CourseListViewModel.CurrentCourseId;
+}
+
+@section Sidebar {
+    @Html.CourseNav(Model.CourseListViewModel)
+}
+
+<div>
+    @Model.CourseListViewModel.Message.ToHTML()
+</div>
+
+
+@using (Html.BeginRouteForm("ModifyCourse", new { courseId = Model.CourseListViewModel.CurrentCourseId, courseScheduleId = Model.CourseScheduleId }))
+{
+    @Html.Hidden("redirectSuccess", "Show")
+    @Html.Hidden("redirectFailure", "Edit")
+
+    <div class="form-group">
+        <label for="schedule">Schedule</label><br />
+        @Html.DropDownList("schedule", Model.SchedulesList, new Dictionary<string, string> { { "class", "form-control" } })
+    </div>
+
+    <div class="form-group">
+        <label for="capacity">Capacity</label><br />
+        @Html.TextBox("capacity", Model.Capacity, new Dictionary<string, string> { { "class", "form-control" } })
+    </div>
+
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+}

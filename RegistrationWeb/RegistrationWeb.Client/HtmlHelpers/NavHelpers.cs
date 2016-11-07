@@ -78,16 +78,16 @@ namespace RegistrationWeb.Client.HtmlHelpers
             StringBuilder builder = new StringBuilder();
             builder.Append(@"<ul class=""nav nav-pills nav-stacked"">");
 
-            foreach (var courseSchedule in courseListViewModel.CourseSchedules.OrderBy(c => c.Course.Title).GroupBy(c => c.Course.Id))
+            foreach (var course in courseListViewModel.Courses.OrderBy(c => c.Title).GroupBy(c => c.Id))
             {
                 TagBuilder li = new TagBuilder("li");
                 li.MergeAttribute("role", "presentation");
 
                 TagBuilder a = new TagBuilder("a");
-                a.MergeAttribute("href", "/course/" + courseSchedule.First().Course.Id);
-                a.InnerHtml = courseSchedule.First().Course.Title;
+                a.MergeAttribute("href", "/course/" + course.First().Id);
+                a.InnerHtml = course.First().Title;
 
-                if (courseListViewModel.CurrentCourseId == courseSchedule.First().Course.Id)
+                if (courseListViewModel.CurrentCourseId == course.First().Id)
                 {
                     li.AddCssClass("active");
                 }

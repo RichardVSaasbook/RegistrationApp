@@ -42,7 +42,7 @@ namespace RegistrationApp.DataClient
         bool CancelCourse(int courseScheduleId);
 
         [OperationContract]
-        bool ModifyCourse(CourseScheduleDAO courseSchedule);
+        bool ModifyCourse(int courseScheduleId, int scheduleId, short capacity);
 
         [OperationContract]
         List<StudentDAO> ListEnrolledStudents(int courseId);
@@ -64,6 +64,15 @@ namespace RegistrationApp.DataClient
 
         [OperationContract]
         bool RemoveStudent(int studentId);
+
+        [OperationContract]
+        List<CourseScheduleDAO> ListCourseSchedule(int courseId);
+
+        [OperationContract]
+        CourseScheduleDAO GetCourseSchedule(int courseScheduleId);
+
+        [OperationContract]
+        ScheduleDAO GetSchedule(int scheduleId);
         #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace RegistrationWeb.Client.Models
 {
     public class CourseListViewModel
     {
-        public IEnumerable<CourseScheduleDAO> CourseSchedules { get; set; }
+        public IEnumerable<CourseDAO> Courses { get; set; }
         public int CurrentCourseId { get; set; }
         public MessageModel Message { get; set; }
         public string CurrentAction { get; set; }

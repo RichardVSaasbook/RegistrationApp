@@ -71,8 +71,20 @@ namespace RegistrationWeb.Client
 
             routes.MapRoute(
                 null,
-                "course/{courseScheduleId}/edit",
+                "course/{courseId}",
+                new { controller = "Course", action = "Show" }
+            );
+
+            routes.MapRoute(
+                null,
+                "course/{courseId}/modify/{courseScheduleId}",
                 new { controller = "Course", action = "Edit" }
+            );
+
+            routes.MapRoute(
+                "ModifyCourse",
+                "course/{courseId}/modify/{courseScheduleId}/update",
+                new { controller = "Course", action = "Update" }
             );
 
             routes.MapRoute(
