@@ -246,3 +246,7 @@ RegistrationApp.DataAccess/App.Config
 /RegistrationApp.DataClient/Web.Debug.config
 /RegistrationApp.DataClient/Web.config
 /RegistrationWeb/RegistrationWeb.Domain/app.config
+/RegistrationWeb/RegistrationWeb.Client/web.Release.config
+/RegistrationWeb/RegistrationWeb.Client/web.Debug.config
+/RegistrationWeb/RegistrationWeb.Client/web.config
+/RegistrationWeb/RegistrationWeb.Tests/app.config
