@@ -15,5 +15,6 @@ namespace RegistrationWeb.Client.Models
         public SelectList PeopleList { get; set; }
         public string Capacity { get; set; }
         public int CourseScheduleId { get; set; }
+        public IEnumerable<StudentDAO> RegisteredStudents { get; set; }
     }
 }

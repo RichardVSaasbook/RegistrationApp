@@ -105,6 +105,11 @@ namespace RegistrationApp.DataAccess
             return db.Schedules.ToList();
         }
 
+        public List<Department> ListDepartments()
+        {
+            return db.Departments.ToList();
+        }
+
         /// <summary>
         /// Finds or creates a resource from the database.
         /// </summary>

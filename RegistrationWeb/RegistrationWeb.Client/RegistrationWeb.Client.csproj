@@ -129,6 +129,7 @@
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.CourseDAO.datasource" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.PersonDAO.datasource" />
     <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.ScheduleDAO.datasource" />
+    <Content Include="Properties\DataSources\RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -153,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistrarController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,6 +167,7 @@
     <Compile Include="Models\CourseListViewModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\NullMessageModel.cs" />
+    <Compile Include="Models\RegistrarViewModel.cs" />
     <Compile Include="Models\StudentCourseViewModel.cs" />
     <Compile Include="Models\StudentListCoursesViewModel.cs" />
     <Compile Include="Models\StudentsListViewModel.cs" />
@@ -204,6 +207,14 @@
     <Content Include="Views\Course\Show.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Course\New.cshtml" />
+    <Content Include="Views\Shared\StudentInfo.cshtml" />
+    <Content Include="Views\Course\Students.cshtml" />
+    <Content Include="Views\Shared\RegistrarNav.cshtml" />
+    <Content Include="Views\Shared\RegistrarStudentInfo.cshtml" />
+    <Content Include="Views\Registrar\Students.cshtml" />
+    <Content Include="Views\Shared\RegistrarCourseInfo.cshtml" />
+    <Content Include="Views\Registrar\FullCourses.cshtml" />
+    <Content Include="Views\Registrar\NewStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -304,4 +304,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListDepartments">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListDepartmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" minOccurs="0" name="ListDepartmentsResult" nillable="true" type="q15:ArrayOfDepartmentDAO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

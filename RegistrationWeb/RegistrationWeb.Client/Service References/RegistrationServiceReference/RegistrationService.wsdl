@@ -139,6 +139,12 @@
   <wsdl:message name="IRegistrationService_GetSchedule_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScheduleResponse" />
   </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListDepartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListDepartments" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_ListDepartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListDepartmentsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRegistrationService">
     <wsdl:operation name="RegisterForCourse">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/RegisterForCourse" message="tns:IRegistrationService_RegisterForCourse_InputMessage" />
@@ -227,6 +233,10 @@
     <wsdl:operation name="GetSchedule">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetSchedule" message="tns:IRegistrationService_GetSchedule_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetScheduleResponse" message="tns:IRegistrationService_GetSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListDepartments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/ListDepartments" message="tns:IRegistrationService_ListDepartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/ListDepartmentsResponse" message="tns:IRegistrationService_ListDepartments_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRegistrationService" type="tns:IRegistrationService">
@@ -422,6 +432,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetSchedule">
       <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListDepartments">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/ListDepartments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

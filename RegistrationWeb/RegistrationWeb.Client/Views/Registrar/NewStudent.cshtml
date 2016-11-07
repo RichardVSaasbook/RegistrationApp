@@ -1,0 +1,30 @@
+﻿@model RegistrationWeb.Client.Models.RegistrarViewModel
+
+@{
+    ViewBag.Title = "NewStudent";
+}
+
+<div>
+    @Html.Partial("RegistrarNav", Model)
+
+    @Model.Message.ToHTML()
+</div>
+
+
+@using (Html.BeginRouteForm("CreateStudent"))
+{
+    @Html.Hidden("redirectSuccess", "Students")
+    @Html.Hidden("redirectFailure", "NewStudent")
+
+    <div class="form-group">
+        <label for="name">Name</label><br />
+        <input id="name" name="name" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="department">Department</label><br />
+        @Html.DropDownList("department", Model.DepartmentsList, new Dictionary<string, string> { { "class", "form-control" } })
+    </div>
+
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+}

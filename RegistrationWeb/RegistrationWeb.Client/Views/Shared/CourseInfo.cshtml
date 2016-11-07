@@ -12,8 +12,8 @@
             <td style="vertical-align: bottom">
                 @using (Html.BeginRouteForm("UnscheduleCourse", new { courseScheduleId = Model.Id }))
                 {
-                    @Html.Hidden("redirectSuccess", "Index")
-                    @Html.Hidden("redirectFailure", "Index")
+                    @Html.Hidden("redirectSuccess", "Show")
+                    @Html.Hidden("redirectFailure", "Show")
                     <button type="submit" data-toggle="tooltip" title="Unschedule Course" class="btn btn-danger pull-right">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
@@ -21,6 +21,10 @@
 
                 <a href="/course/@Model.Course.Id/modify/@Model.Id" data-toggle="tooltip" title="Edit Course" class="btn btn-primary pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
+                </a>
+
+                <a href="/course/@Model.Course.Id/@Model.Id/students" data-toggle="tooltip" title="View Students" class="btn btn-default pull-right">
+                    <span class="glyphicon glyphicon-eye-open"></span>
                 </a>
             </td>
         </tr>

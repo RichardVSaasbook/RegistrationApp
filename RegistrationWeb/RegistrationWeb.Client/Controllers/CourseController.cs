@@ -121,6 +121,38 @@ namespace RegistrationWeb.Client.Controllers
             }
         }
 
+        public RedirectToRouteResult Unschedule(int courseId, int courseScheduleId, string redirectSuccess, string redirectFailure)
+        {
+            if (repository.CancelCourse(courseScheduleId))
+            {
+                TempData["message"] = new MessageModel { Text = "Succesfully unscheduled course!", Type = "success" };
+                return RedirectToAction(redirectSuccess, new { courseId });
+            }
+            else
+            {
+                TempData["message"] = new MessageModel { Text = "Could not unschedule the course.", Type = "danger" };
+                return RedirectToAction(redirectFailure, new { courseId });
+            }
+        }
+
+        public ViewResult Students(int courseId, int courseScheduleId)
+        {
+            List<SelectListItem> peopleList = new List<SelectListItem>();
+
+            return View(new CourseCourseViewModel
+            {
+                CourseListViewModel = new CourseListViewModel
+                {
+                    CurrentCourseId = courseId,
+                    Courses = repository.ListCourseInformation(),
+                    Message = GetMessage(),
+                    CurrentAction = "Students"
+                },
+                CourseScheduleId = courseScheduleId,
+                RegisteredStudents = repository.ListEnrolledStudents(courseScheduleId)
+            });
+        }
+
         /// <summary>
         /// Get the current Message.
         /// </summary>

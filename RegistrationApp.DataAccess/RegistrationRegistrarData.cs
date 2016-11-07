@@ -11,7 +11,17 @@ namespace RegistrationApp.DataAccess
         /// <returns>The List of Courses.</returns>
         public List<CourseSchedule> ListOpenCourses()
         {
-            return db.CourseSchedules.Where(s => GetNumberOfStudentsInCourse(s) < s.Capacity).ToList();
+            List<CourseSchedule> courseSchedules = new List<CourseSchedule>();
+
+            foreach (CourseSchedule courseSchedule in db.CourseSchedules)
+            {
+                if (GetNumberOfStudentsInCourse(courseSchedule) < courseSchedule.Capacity)
+                {
+                    courseSchedules.Add(courseSchedule);
+                }
+            }
+
+            return courseSchedules;
         }
 
         /// <summary>
@@ -20,7 +30,17 @@ namespace RegistrationApp.DataAccess
         /// <returns>The List of Courses.</returns>
         public List<CourseSchedule> ListFullCourses()
         {
-            return db.CourseSchedules.Where(s => GetNumberOfStudentsInCourse(s) >= s.Capacity).ToList();
+            List<CourseSchedule> courseSchedules = new List<CourseSchedule>();
+
+            foreach (CourseSchedule courseSchedule in db.CourseSchedules)
+            {
+                if (GetNumberOfStudentsInCourse(courseSchedule) >= courseSchedule.Capacity)
+                {
+                    courseSchedules.Add(courseSchedule);
+                }
+            }
+
+            return courseSchedules;
         }
 
         /// <summary>

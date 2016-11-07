@@ -162,5 +162,10 @@ namespace RegistrationWeb.Domain.Concrete
         {
             return rsc.GetSchedule(scheduleId);
         }
+
+        public IEnumerable<DepartmentDAO> ListDepartments()
+        {
+            return rsc.ListDepartments();
+        }
     }
 }

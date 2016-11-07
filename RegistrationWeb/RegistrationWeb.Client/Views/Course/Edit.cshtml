@@ -25,7 +25,7 @@
 
     <div class="form-group">
         <label for="capacity">Capacity</label><br />
-        @Html.TextBox("capacity", Model.Capacity, new Dictionary<string, string> { { "class", "form-control" } })
+        <input id="capacity" name="capacity" type="text" value="@Model.Capacity" class="form-control" />
     </div>
 
     <input type="submit" value="Save Changes" class="btn btn-primary" />

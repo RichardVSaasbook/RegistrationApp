@@ -95,4 +95,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPersonDAO" nillable="true" type="tns:ArrayOfPersonDAO" />
+  <xs:complexType name="ArrayOfDepartmentDAO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DepartmentDAO" nillable="true" type="tns:DepartmentDAO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDepartmentDAO" nillable="true" type="tns:ArrayOfDepartmentDAO" />
 </xs:schema>

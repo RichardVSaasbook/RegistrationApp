@@ -146,6 +146,12 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/GetSchedule", ReplyAction="http://tempuri.org/IRegistrationService/GetScheduleResponse")]
         System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.ScheduleDAO> GetScheduleAsync(int scheduleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListDepartments", ReplyAction="http://tempuri.org/IRegistrationService/ListDepartmentsResponse")]
+        RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO[] ListDepartments();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistrationService/ListDepartments", ReplyAction="http://tempuri.org/IRegistrationService/ListDepartmentsResponse")]
+        System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO[]> ListDepartmentsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -349,6 +355,14 @@ namespace RegistrationWeb.Client.RegistrationServiceReference {
         
         public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.ScheduleDAO> GetScheduleAsync(int scheduleId) {
             return base.Channel.GetScheduleAsync(scheduleId);
+        }
+        
+        public RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO[] ListDepartments() {
+            return base.Channel.ListDepartments();
+        }
+        
+        public System.Threading.Tasks.Task<RegistrationWeb.Domain.RegistrationServiceReference.DepartmentDAO[]> ListDepartmentsAsync() {
+            return base.Channel.ListDepartmentsAsync();
         }
     }
 }

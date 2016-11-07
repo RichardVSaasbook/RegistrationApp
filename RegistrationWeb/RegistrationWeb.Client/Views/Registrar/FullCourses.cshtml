@@ -1,0 +1,26 @@
+﻿@model RegistrationWeb.Client.Models.RegistrarViewModel
+
+@{
+    ViewBag.Title = "Full Courses";
+}
+
+<div>
+    @Html.Partial("RegistrarNav", Model)
+
+    @Model.Message.ToHTML()
+</div>
+
+@if (Model.CourseSchedules.Count() > 0)
+{
+    foreach (var cs in Model.CourseSchedules)
+    {
+        @Html.Partial("RegistrarCourseInfo", cs)
+    }
+}
+else
+{
+    <br />
+    <div class="alert alert-warning">
+        No courses to display.
+    </div>
+}

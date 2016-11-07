@@ -1,0 +1,21 @@
+﻿@model RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO
+
+<table class="table table-hover">
+    <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <td colspan="2"><h3>@Model.Person.Name</h3></td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Major</th>
+            <td>@Model.MajorDepartment.Name</td>
+        </tr>
+    </tbody>
+</table>

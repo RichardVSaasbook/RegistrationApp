@@ -73,6 +73,9 @@ namespace RegistrationApp.DataClient
 
         [OperationContract]
         ScheduleDAO GetSchedule(int scheduleId);
+
+        [OperationContract]
+        List<DepartmentDAO> ListDepartments();
         #endregion
     }
 }

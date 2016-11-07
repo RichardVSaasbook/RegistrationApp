@@ -123,6 +123,18 @@ namespace RegistrationApp.DataClient
             return courseSchedules;
         }
 
+        public List<DepartmentDAO> ListDepartments()
+        {
+            List<DepartmentDAO> departments = new List<DepartmentDAO>();
+
+            foreach (Department department in data.ListDepartments())
+            {
+                departments.Add(Mapper.MapToDepartmentDAO(department));
+            }
+
+            return departments;
+        }
+
         public List<StudentDAO> ListEnrolledStudents(int courseId)
         {
             List<StudentDAO> students = new List<StudentDAO>();

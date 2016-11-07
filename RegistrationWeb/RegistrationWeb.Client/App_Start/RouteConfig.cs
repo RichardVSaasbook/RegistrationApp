@@ -63,6 +63,7 @@ namespace RegistrationWeb.Client
             );
             #endregion
 
+            #region Courses
             routes.MapRoute(
                 null,
                 "course",
@@ -101,9 +102,54 @@ namespace RegistrationWeb.Client
 
             routes.MapRoute(
                 "UnscheduleCourse",
-                "course/{courseScheduleId}/unschedule",
+                "course/{courseId}/unschedule/{courseScheduleId}",
                 new { controller = "Course", action = "Unschedule" }
             );
+
+            routes.MapRoute(
+                null,
+                "course/{courseId}/{courseScheduleId}/students",
+                new { controller = "Course", action = "Students" }
+            );
+            #endregion
+
+            #region Registrar
+            routes.MapRoute(
+                null,
+                "registrar",
+                new { controller = "Registrar", action = "Students" }
+            );
+            
+            routes.MapRoute(
+                null,
+                "registrar/new-student",
+                new { controller = "Registrar", action = "NewStudent" }
+            );
+
+            routes.MapRoute(
+                "CreateStudent",
+                "registrar/create-student",
+                new { controller = "Registrar", action = "CreateStudent" }
+            );
+
+            routes.MapRoute(
+                "RemoveStudent",
+                "registrar/{studentId}/remove",
+                new { controller = "Registrar", action = "RemoveStudent" }
+            );
+
+            routes.MapRoute(
+                null,
+                "registrar/full-courses",
+                new { controller = "Registrar", action = "FullCourses" }
+            );
+
+            routes.MapRoute(
+                null,
+                "registrar/open-courses",
+                new { controller = "Registrar", action = "OpenCourses" }
+            );
+            #endregion
         }
     }
 }

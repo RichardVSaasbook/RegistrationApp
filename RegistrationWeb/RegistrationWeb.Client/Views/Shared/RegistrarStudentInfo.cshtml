@@ -1,0 +1,31 @@
+﻿@model RegistrationWeb.Domain.RegistrationServiceReference.StudentDAO
+
+<table class="table table-hover">
+    <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <td><h3>@Model.Person.Name</h3></td>
+            <td style="vertical-align: bottom">
+                @using (Html.BeginRouteForm("RemoveStudent", new { studentId = Model.Person.Id }))
+                {
+                    @Html.Hidden("redirectSuccess", "Students")
+                    @Html.Hidden("redirectFailure", "Students")
+                    <button type="submit" data-toggle="tooltip" title="Remove Student" class="btn btn-danger pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                }
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Major</th>
+            <td>@Model.MajorDepartment.Name</td>
+        </tr>
+    </tbody>
+</table>

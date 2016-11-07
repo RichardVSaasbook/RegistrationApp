@@ -34,5 +34,6 @@ namespace RegistrationWeb.Domain.Abstract
         IEnumerable<CourseScheduleDAO> ListCourseSchedules(int courseId);
         CourseScheduleDAO GetCourseSchedule(int courseScheduleId);
         ScheduleDAO GetSchedule(int scheduleId);
+        IEnumerable<DepartmentDAO> ListDepartments();
     }
 }

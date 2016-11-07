@@ -1,0 +1,26 @@
+﻿@model RegistrationWeb.Client.Models.RegistrarViewModel
+
+@{
+    ViewBag.Title = "All Students";
+}
+
+<div>
+    @Html.Partial("RegistrarNav", Model)
+
+    @Model.Message.ToHTML()
+</div>
+
+@if (Model.Students.Count() > 0)
+{
+    foreach (var s in Model.Students)
+    {
+        @Html.Partial("RegistrarStudentInfo", s)
+    }
+}
+else
+{
+    <br />
+    <div class="alert alert-warning">
+        No students to display.
+    </div>
+}
