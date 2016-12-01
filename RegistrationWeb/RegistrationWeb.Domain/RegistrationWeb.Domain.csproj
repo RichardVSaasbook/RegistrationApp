@@ -82,7 +82,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Service References\RegistrationServiceReference\RegistrationService.wsdl" />
     <None Include="Service References\RegistrationServiceReference\RegistrationService.xsd">

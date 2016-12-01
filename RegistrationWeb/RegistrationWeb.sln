@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationWeb.Client", "RegistrationWeb.Client\RegistrationWeb.Client.csproj", "{80068D17-340A-4C42-AC42-575945AB8FE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationWeb.Tests", "RegistrationWeb.Tests\RegistrationWeb.Tests.csproj", "{037AAE75-5FC7-4D9F-9E51-C83EE61EDAC2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationWeb.Domain", "RegistrationWeb.Domain\RegistrationWeb.Domain.csproj", "{CB9DE7AE-7211-456C-A746-98E728191BBB}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{80068D17-340A-4C42-AC42-575945AB8FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80068D17-340A-4C42-AC42-575945AB8FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80068D17-340A-4C42-AC42-575945AB8FE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{037AAE75-5FC7-4D9F-9E51-C83EE61EDAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{037AAE75-5FC7-4D9F-9E51-C83EE61EDAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{037AAE75-5FC7-4D9F-9E51-C83EE61EDAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{037AAE75-5FC7-4D9F-9E51-C83EE61EDAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB9DE7AE-7211-456C-A746-98E728191BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB9DE7AE-7211-456C-A746-98E728191BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB9DE7AE-7211-456C-A746-98E728191BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
