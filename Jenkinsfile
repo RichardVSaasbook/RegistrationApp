@@ -151,7 +151,7 @@ stage("DEPLOY") {
     try {
       dotnetPackage(toolMsBuild, "*.csproj")
       sleep time: 5, units: "SECONDS"
-      dotnetDeploy("PublishPizzaStoreApp")
+      dotnetDeploy("PublishRegistrationApp")
       slackNotify(slackChannel, buildColor.green, "DEPLOY", buildFlag.passing)
     } catch(error) {
       slackNotify(slackChannel, buildColor.red, "DEPLOY", buildFlag.failing)
